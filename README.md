@@ -3,8 +3,7 @@
 ## Preámbulo
 
 
-![don](img/scrum.jpg "gato")
-
+![hola](/lim-2018-05-bc-core-am-datadashboard/src/img/trello.jpg "hello")
 
 
 
