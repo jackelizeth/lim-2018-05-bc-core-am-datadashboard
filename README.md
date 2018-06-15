@@ -2,18 +2,6 @@
 
 ## Preámbulo
 
-
-
-![hola](/lim-2018-05-bc-core-am-datadashboard/src/img/trello.jpg "hello")
-
-
-
-
-
-
-
-
-
 En Laboratoria, las Training Managers (TMs) hacen un gran trabajo al analizar la
 mayor cantidad de datos posibles respecto al progreso de las estudiantes para
 apoyarlas en su aprendizaje.
