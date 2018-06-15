@@ -3,7 +3,7 @@
 ## Preámbulo
 
 
-![Con titulo](pictures/avatar.png "titulo")
+![don](img/scrum.jpg "gato")
 
 
 
