@@ -1,0 +1,52 @@
+body{
+padding: 0px;
+margin: 0px;
+
+}
+
+header{
+
+    position: relative; 
+    left: 50%;
+    transform: translateX(-50%);
+    width:500px; 
+}
+
+header img{
+
+    width: 500px
+}    
+
+.logo_laboratoria{
+    text-align: center;
+
+}
+
+.cuerpo{
+    color:red;
+    margin-right:auto; 
+    margin-left:auto; 
+
+}
+
+section{
+
+    position: relative; 
+    left: 50%;
+    transform: translateX(-50%);
+    width:300px;     
+
+}
+
+section form{
+    width:300px;   
+}
+
+section form input{
+    width: 100%
+}
+
+a{
+
+    text-decoration: none;
+}
