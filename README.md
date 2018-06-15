@@ -3,11 +3,7 @@
 ## Preámbulo
 
 
-![scrum 1][1]  ![trello 2][2]
-
- [1]: img/scrum.jpg
- [2]: img/trello.jpg
-
+![Con titulo](pictures/avatar.png "titulo")
 
 
 
