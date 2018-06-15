@@ -9,7 +9,6 @@ form.addEventListener('submit', function (e) {
     miResponContainer.innerHTML='';
     miForText = miField.value;
     getNews();
-
 });
 
 function getNews () { 
@@ -25,9 +24,7 @@ function addNews () {
     const data = JSON.parse(this.responseText);
     miResponContainer.innerHTML= data;
 } 
-
    
-    function handleError(){
+function handleError(){
         console.log ('Se ha producido un error');
-       
     }
