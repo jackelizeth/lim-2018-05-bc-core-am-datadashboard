@@ -2,6 +2,22 @@
 
 ## Preámbulo
 
+
+![scrum 1][1]  ![trello 2][2]
+
+ [1]: img/scrum.jpg
+ [2]: img/trello.jpg
+
+
+
+
+
+
+
+
+
+
+
 En Laboratoria, las Training Managers (TMs) hacen un gran trabajo al analizar la
 mayor cantidad de datos posibles respecto al progreso de las estudiantes para
 apoyarlas en su aprendizaje.
@@ -109,30 +125,7 @@ contiene el _boilerplate_.
 El _boilerplate_ contiene una estructura de archivos como punto de partida así
 como toda la configuración de dependencias y tests de ejemplo:
 
-```text
-./
-├── .editorconfig
-├── .eslintrc
-├── .gitignore
-├── README.md
-├── data
-│   ├── cohorts
-│   │   └── lim-2018-03-pre-core-pw
-│   │       ├── progress.json
-│   │       └── users.json
-│   └── cohorts.json
-├── package.json
-├── src
-│   ├── data.js
-│   ├── index.html
-│   ├── main.js
-│   └── style.css
-└── test
-    ├── data.spec.js
-    ├── fixtures.js
-    ├── headless.js
-    └── index.html
-```
+
 
 La carpeta `data/` dentro del _boilerplate_ incluye un extracto de la data que
 podemos usar tanto en los tests como en la interfaz en sí.
@@ -450,65 +443,6 @@ Recuerda revisar la [rúbrica](https://docs.google.com/spreadsheets/d/e/2PACX-1v
 para ver la descripción detallada de cada _habilidad_ y cada _nivel_. A
 continuación presentamos los niveles esperados para cada habilidad:
 
-### General
-
-| Característica/Habilidad | Nivel esperado |
-|--------------------------|----------------|
-| Completitud | 3
-| Investigación | 3
-| Documentación | 2
-
-### Tech
-
-| Habilidad | Nivel esperado |
-|-----------|----------------|
-| **JavaScript** | |
-| Estilo | 2
-| Nomenclatura/semántica | 3
-| Funciones/modularidad | 2
-| Estructuras de datos | 2
-| Tests | 2
-| **HTML** | |
-| Validación | 3
-| Estilo | 3
-| Semántica | 2
-| SEO | 0
-| **CSS** | |
-| DRY | 2
-| Responsive | 2
-| **SCM** | |
-| Git | 3
-| GitHub | 2
-| **CS** | |
-| Lógica | 1
-| Arquitectura | 2
-| Patrones/paradigmas | 0
-
-### UX
-
-| Habilidad | Nivel esperado |
-|-----------|----------------|
-| User Centricity | 3 |
-| Entrevistas | 2 |
-| Contraste | 3 |
-| Alineación | 3 |
-| Jerarquía | 2 |
-| Tipografía | 2 |
-| Color | 2 |
-
-### Habilidades Blandas
-Esperamos que alcances al menos el nivel 2 en todas tus habilidades blandas.
-
-| Habilidad | Nivel esperado |
-|-----------|----------------|
-| Planificación y organización | 2
-| Autoaprendizaje | 2
-| Solución de problemas | 2
-| Dar y recibir feedback | 2
-| Adaptabilidad | 2
-| Trabajo en equipo (trabajo colaborativo y responsabilidad) | 2
-| Comunicación eficaz | 2
-| Presentaciones | 2
 
 ***
 
