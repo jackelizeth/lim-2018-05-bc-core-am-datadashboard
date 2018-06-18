@@ -24,8 +24,12 @@ A pesar de que la data de progreso del LMS (ej. lecturas leídas, ejercicios
 ##  Data Dashboard
 
 De acuerdo a las especificaciones solicitadas para el proyecto, inicimaos con nuestra tabla Scrum, que nos permitira realizar una adecueda planificación en nuestros tiempos.
+![Scrum](src/Imagen/scrum.jpg)
 
+![Trello](src/Imagen/trello.jpg)
 
+![Boceto](src/Imagen/pagina1.jpg)
+![Boceto](src/Imagen/pagina%202.jpg)
 
 ## Objetivos 
 
