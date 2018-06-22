@@ -1,5 +1,8 @@
 // window.computeUsersStats = (users, progress, courses) => {
 
+
+
+
 //     lel rr = 
 
 // },
@@ -18,12 +21,12 @@
   
 // }
 
-    data.sortUsers = (users, orderBy, orderDirection) 
+    // data.sortUsers = (users, orderBy, orderDirection) 
 
 
-    data.filterUsers = (users, search) 
+    // data.filterUsers = (users, search) 
 
-    data.progressCohortsData(users, progress, courses) 
+    // data.progressCohortsData(users, progress, courses) 
 
 
 
