@@ -9,65 +9,65 @@ const field_3 = document.getElementById('keyword-3');
  
 const responContainer = document.getElementById('respon-container');
 
-let option;
+let cohortData;
+let userData;
+let ProgressData;
 
-form_1.addEventListener('submit', function (e) {
+form_1.addEventListener('submit', (e) => {
     e.preventDefault(),
-    responContainer.innerHTML='';
-    option ="cohort";
-    getData('/data/cohorts.json');
+    getData('/data/cohorts.json', (e) => {
+        // currentTarget = Identifica el objetivo actual para el evento
+        // responseText = retorna la respuesta como string
+        // analiza texto JSON, transformando opcionalmente  el valor 
+        const data = JSON.parse(e.currentTarget.responseText);
+        responContainer.innerHTML='';
+        console.log(data)
+        cohortData = data;
+    });
 });
 
-form_2.addEventListener('submit', function (e) {
+form_2.addEventListener('submit', (e) => {
     e.preventDefault(),
-    responContainer.innerHTML='';
-    option ="user";
-    getData('/data/cohorts/lim-2018-03-pre-core-pw/users.json');
+     getData('/data/cohorts/lim-2018-03-pre-core-pw/users.json', (e) => {
+        const data = JSON.parse(e.currentTarget.responseText);
+        responContainer.innerHTML='';
+        console.log(data)
+        userData=data;
+    });
 });
 
-form_3.addEventListener('submit', function (e) {
+form_3.addEventListener('submit', (e) => {
     e.preventDefault(),
-    responContainer.innerHTML='';
-    option ="progress";
-    getData('/data/cohorts/lim-2018-03-pre-core-pw/progress.json');
+    getData('/data/cohorts/lim-2018-03-pre-core-pw/progress.json', (e) => {
+        const data = JSON.parse(e.currentTarget.responseText);
+        responContainer.innerHTML='';
+        console.log(data)
+        ProgressData = data;
+    });
 });
 
-function getData (Url) { 
+const getData =  (url, callback) => { 
 
 var xhr = new XMLHttpRequest();
-    xhr.open("GET", Url , true)
-    xhr.onload = dataNew;
+    xhr.open("GET", url , true)
+    xhr.onload = callback;//le creo una funcion con 3 cuerpos
     xhr.onerror = dataError;
     xhr.send();
 }
 
-function dataNew () {    
-    let listado = "";
-    if(option =="cohort"){
-        //responText retorna la respuesta como string
-        //JSON.parse lo convierten a un objeto JSON
-        const data = JSON.parse(this.responseText);
-        //console.log(data)
-        data.forEach(block => {
-            listado +=  block.id+"<br>";
-        });
-        
-    }else if(option == "user"){
-        const data = JSON.parse(this.responseText);
-        //console.log(data)
-        data.forEach(block => {
-            listado += block.name +"---"+ block.role+"<br>";
-        });
 
-    }else{
-        const data = Object.keys(JSON.parse(this.responseText)) ;
-        //console.log(data)
-        data.forEach(block => {
-            listado += block +"<br>";
-        });
-    }
-    responContainer.innerHTML= listado ;
-} 
-function dataError(){
+
+//  const urlU = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';g
+//  const users = () =>{
+//      const datauser = JSON.parse(event.target.responseText);
+//  }
+//  getData(urlU, users)
+
+const dataError = () => {
         console.log ('Se ha producido un error');
 }
+
+// let infouser = new computeUsersStats(cohortData,userData,ProgressData);
+
+
+

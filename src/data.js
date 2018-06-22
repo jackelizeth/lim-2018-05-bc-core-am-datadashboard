@@ -1,28 +1,29 @@
-window.data = {
+// window.computeUsersStats = (users, progress, courses) => {
 
-    computeUsersStats(users, progress, courses) = {
-        for(var i = 0; i < 3; i++){
+//     lel rr = 
 
-        }
-        
-     
-    }
-
-    sortUsers(users, orderBy, orderDirection) = {
-
-    }
+// },
 
 
-    filterUsers(users, search) = {
-
-    }
-
-    progressCohortsData(users, progress, courses) = {
-
-    }
 
 
-};
+// const hh = 
+
+    
+//     try{
+
+//     }catch{
+
+//     }
+  
+// }
+
+    data.sortUsers = (users, orderBy, orderDirection) 
+
+
+    data.filterUsers = (users, search) 
+
+    data.progressCohortsData(users, progress, courses) 
 
 
 
