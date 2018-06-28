@@ -46,15 +46,20 @@ form{
         transition: all 500ms ease;
         cursor: pointer;
         cursor: hand;
-        font-family: 'Josefin Sans', sans-serif;
+        font-family: Futura;
     
         } 
 
 section{
     position: relative; 
-    left: 50%;
+    left: 10%;
     transform: translateX(-50%);
-    width:300px;     
+    width:300px;  
+     font-family: Futura;
+  
+}
+section img{
+    width: 80px;
 }
 
 section form{
@@ -68,3 +73,11 @@ section form input{
 a{
  text-decoration:none;
 }
+ul {
+    max-height: 0;
+    margin: 0;
+    padding: 0;
+
+    }
+
+
