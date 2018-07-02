@@ -36,3 +36,5 @@ De acuerdo a las especificaciones solicitadas para el proyecto, inicimaos con nu
 
 El objetivo principal de este proyecto es crear una herramienta web que permita a las Training Managers de Laboratoria verificar el progreso de cada una de las estudiantes mediante la dashboard de una manera fácil y rápida,  permitiendo así optimizar sus tiempos a la hora de  visualizar todos los datos posibles respecto al desempeño de las estudiantes para apoyarlas en su aprendizaje. 
 
+![Prototipo](src/Imagen/Prototipo-Marvel.jpg)
+
