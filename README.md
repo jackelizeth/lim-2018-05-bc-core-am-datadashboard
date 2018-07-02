@@ -24,6 +24,7 @@ A pesar de que la data de progreso del LMS (ej. lecturas leídas, ejercicios
 ##  Data Dashboard
 
 De acuerdo a las especificaciones solicitadas para el proyecto, inicimaos con nuestra tabla Scrum, que nos permitira realizar una adecueda planificación en nuestros tiempos.
+
 ![Scrum](src/Imagen/scrum.jpg)
 
 ![Trello](src/Imagen/trello.jpg)
@@ -33,4 +34,5 @@ De acuerdo a las especificaciones solicitadas para el proyecto, inicimaos con nu
 
 ## Objetivos 
 
-El objetivo principal de este proyecto es que permita a las Training Managers de Laboratoria verificar el progreso de cada una de las estudiantes mediante la dashboard
+El objetivo principal de este proyecto es crear una herramienta web que permita a las Training Managers de Laboratoria verificar el progreso de cada una de las estudiantes mediante la dashboard de una manera fácil y rápida,  permitiendo así optimizar sus tiempos a la hora de  visualizar todos los datos posibles respecto al desempeño de las estudiantes para apoyarlas en su aprendizaje. 
+
