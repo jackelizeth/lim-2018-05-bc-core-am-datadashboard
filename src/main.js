@@ -6,7 +6,7 @@
 let urlCoh = '../data/cohorts.json';
 
 const getError = () => {
-   console.log('existe un error');
+//    console.log('existe un error');
 }
 
 // data cohort
@@ -63,7 +63,7 @@ xhrC.onload = (event) => { // onload carga un documento y cuando termina lo anal
                          }
 
                         let info =  processCohortData(options);// llamar a la funcion
-                       //   console.log(options)
+                         console.log(options)
 
 
                    }
