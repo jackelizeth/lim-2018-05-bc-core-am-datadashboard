@@ -2,6 +2,8 @@ const inputText = document.getElementById('inp-text-1');
 const inputBtn = document.getElementById('inp-btn-1');
 const showInformation = document.getElementById('show-information');
 
+
+
 let urlCoh = '../data/cohorts.json';
 
 const getError = () => {
@@ -13,15 +15,15 @@ const xhrC = new XMLHttpRequest();
 xhrC.open('GET', urlCoh); // 
 xhrC.onload = (event) => { // onload carga un documento y cuando termina lo analiza //funcion anonima
     const arrCoh = JSON.parse(event.target.response);
-
+   
         // muestra el listado general de los cohorts
         const selectCohorts = document.getElementById('listaCohort');
         // cada elemento de array sera recorrido
         arrCoh.forEach(ele => {
-            // selectCohorts inserta en la etiqueta option,de cada elemento del array,solo el id de los cohorts
-            selectCohorts.innerHTML +=`<option value=${ele.id}>txt ${ele.id}</option>`;
+            // selectCohorts inserta en la etiqueta option,el elemento del array,solo el id de los cohorts
+            // muestra todos los id lima mexico brasil
+            selectCohorts.innerHTML +=`<option value=${ele.id}>${ele.id}</option>`;
         })
-
 
 
     selectCohorts.addEventListener('change',(event) => {
@@ -33,7 +35,7 @@ xhrC.onload = (event) => { // onload carga un documento y cuando termina lo anal
         xhrUser.open('GET',`../data/cohorts/${idCohort}/users.json`);//apertura una conexion
         // console.log(event.target.value);
         xhrUser.onload = (event) => { 
-            // console.log(event.target.readyState) // 4 la respuesta esta lista 
+            // console.log(event.target.readyState) // 4 la respuesta esta lilkpsta 
             // console.log(event.target.status) // 200 todo esta correcto
             if (event.target.readyState == 4 && event.target.status == 200) {
                 let arraUsers = JSON.parse(event.target.response);
@@ -47,21 +49,20 @@ xhrC.onload = (event) => { // onload carga un documento y cuando termina lo anal
                         // console.log(objProgress)
 
                         const options = {
-                            cohort          : arrCoh.filter((ele) => {return ele.id == idCohort}),// igual a : lim-2018-03-pre-core-pw
+                            cohort          : arrCoh.filter((ele) => {return ele.id == idCohort}),
+                            // filter solo ele.id = son todos los cohorts lima-mexico-brasil
                             cohortData      :   {
                                                 users       : arraUsers,
                                                 progress    : objProgress,
                                                 },
-                            orderBy         : "nombre",
-                            orderDirection  : "DESC",
-                            search          : "Jackeline Quintana Flores"
+                            orderBy         : "name",
+                            orderDirection  : "ASC",
+                            search          : ''
 
                           }
-
-                         let info =  processCohortData(options);// llamar a la funcion
-                        //   console.log(options)
-
-
+                         const zare = processCohortData(options);// llamar a la funcion
+                        //  el objeto options contiene a arrCoh, arraUsers, objProgress
+                        
                     }
                 }
                 xhrPro.onerror = getError; //cuando no hay respuesta de la solicitud
@@ -84,7 +85,7 @@ xhrC.send();//send envia o ejecuta la peticion
 // let pEleme = document.createElement('p');
 // // creando nodo de texto para pEleme 
 // let contenido = document.createTextNode('LISTA DE ALUMNAS');
-// // añadiendo el contenido al texto al pEleme
+// // a�adiendo el contenido al texto al pEleme
 // pEleme.appendChild(contenido);
 // // agregando atributo al pEleme
 // pEleme.setAttribute('align', 'center');
