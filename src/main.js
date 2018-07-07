@@ -15,7 +15,7 @@ const xhrC = new XMLHttpRequest();
 xhrC.open('GET', urlCoh); // 
 xhrC.onload = (event) => { // onload carga un documento y cuando termina lo analiza //funcion anonima
     const arrCoh = JSON.parse(event.target.response);
-   
+    
         // muestra el listado general de los cohorts
         const selectCohorts = document.getElementById('listaCohort');
         // cada elemento de array sera recorrido
@@ -24,7 +24,6 @@ xhrC.onload = (event) => { // onload carga un documento y cuando termina lo anal
             // muestra todos los id lima mexico brasil
             selectCohorts.innerHTML +=`<option value=${ele.id}>${ele.id}</option>`;
         })
-
 
     selectCohorts.addEventListener('change',(event) => {
 
@@ -39,7 +38,8 @@ xhrC.onload = (event) => { // onload carga un documento y cuando termina lo anal
             // console.log(event.target.status) // 200 todo esta correcto
             if (event.target.readyState == 4 && event.target.status == 200) {
                 let arraUsers = JSON.parse(event.target.response);
-                // console.log(arraUsers)
+                // const arrayUsers = arraUsers.filter(ele => ele.signupCohort == idCohort);
+                // console.log(arrayUsers)
 
                 const xhrPro = new XMLHttpRequest();
                 xhrPro.open('GET',`../data/cohorts/${idCohort}/progress.json`);//apertura una conexion
@@ -49,8 +49,9 @@ xhrC.onload = (event) => { // onload carga un documento y cuando termina lo anal
                         // console.log(objProgress)
 
                         const options = {
-                            cohort          : arrCoh.filter((ele) => {return ele.id == idCohort}),
-                            // filter solo ele.id = son todos los cohorts lima-mexico-brasil
+                            cohort          :  arrCoh.filter((ele) => {return ele.id == idCohort}),
+                            // filter del arrCoh solo del ele su id comparo con el idCohort (idCohort = lim-2018-03-pre-core-pw) 
+                            // cohort es solo filtro cohort lima [{lim-2018-03-pre-core-pw}] y todo su contenido
                             cohortData      :   {
                                                 users       : arraUsers,
                                                 progress    : objProgress,
@@ -60,10 +61,18 @@ xhrC.onload = (event) => { // onload carga un documento y cuando termina lo anal
                             search          : ''
 
                           }
-                         const zare = processCohortData(options);// llamar a la funcion
+                         const cohortUsePro = processCohortData(options);// llamar a la funcion
                         //  el objeto options contiene a arrCoh, arraUsers, objProgress
-                        
+
                     }
+                //     const showCohort = (cohort ,arrCoh ) => {
+                //         const cohortDeLima = arrCoh.filter(ele =>{
+                //             return ele.id.indexOf(cohort) !== -1;
+                //         });
+                //         console.log(cohortDeLima)
+                //     }
+                //    showCohort();
+                  
                 }
                 xhrPro.onerror = getError; //cuando no hay respuesta de la solicitud
                 xhrPro.send();//ejecuta la peticion
@@ -76,8 +85,9 @@ xhrC.onload = (event) => { // onload carga un documento y cuando termina lo anal
 
 };
 xhrC.onerror = getError;
-
 xhrC.send();//send envia o ejecuta la peticion
+
+
 
 
 // // creando nodos 
