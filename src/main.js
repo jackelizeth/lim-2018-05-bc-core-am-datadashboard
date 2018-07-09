@@ -25,9 +25,10 @@ xhrC.onload = (event) => { // onload carga un documento y cuando termina lo anal
             selectCohorts.innerHTML +=`<option value=${ele.id}>${ele.id}</option>`;
         })
 
+
     selectCohorts.addEventListener('change',(event) => {
 
-        let idCohort = event.target.value;//lim-2018-03-pre-core-pw
+        let idCohort = event.target.value;//value = lim-2018-03-pre-core-pw
 
         const xhrUser = new XMLHttpRequest();
         // value del option es lim-2018-03-pre-core-pw = ${event.target.value} 
@@ -41,6 +42,21 @@ xhrC.onload = (event) => { // onload carga un documento y cuando termina lo anal
                 // const arrayUsers = arraUsers.filter(ele => ele.signupCohort == idCohort);
                 // console.log(arrayUsers)
 
+
+            // muestra el listado general de los cohorts
+            const listaName = document.getElementById('listaName');
+            // cada elemento de array sera recorrido
+                arraUsers.forEach(ele => {
+                // selectCohorts inserta en la etiqueta option,el elemento del array,solo el id de los cohorts
+                // muestra todos los id lima mexico brasil
+                listaName.innerHTML +=`<option value="${ele.name}">${ele.name}</option>`;
+            })
+
+            listaName.addEventListener('change',(event) => {
+                let textName = document.getElementById("listaName").value;//lim-2018-03-pre-core-pw
+
+                // console.log(textName)
+
                 const xhrPro = new XMLHttpRequest();
                 xhrPro.open('GET',`../data/cohorts/${idCohort}/progress.json`);//apertura una conexion
                 xhrPro.onload = (event) => { 
@@ -49,19 +65,20 @@ xhrC.onload = (event) => { // onload carga un documento y cuando termina lo anal
                         // console.log(objProgress)
 
                         const options = {
-                            cohort          :  arrCoh.filter((ele) => {return ele.id == idCohort}),
+                            "cohort"          :  arrCoh.filter((ele) => {return ele.id == idCohort}),
                             // filter del arrCoh solo del ele su id comparo con el idCohort (idCohort = lim-2018-03-pre-core-pw) 
                             // cohort es solo filtro cohort lima [{lim-2018-03-pre-core-pw}] y todo su contenido
-                            cohortData      :   {
+                            "cohortData"      :   {
                                                 users       : arraUsers,
                                                 progress    : objProgress,
                                                 },
-                            orderBy         : "name",
-                            orderDirection  : "ASC",
-                            search          : ''
+                            "orderBy"         : document.getElementById("orderBy").value,
+                            "orderDirection"  : document.getElementById("orderDirection").value,
+                            "search"          : textName
 
                           }
                          const cohortUsePro = processCohortData(options);// llamar a la funcion
+                         mostrarDataProgress(cohortUsePro);
                         //  el objeto options contiene a arrCoh, arraUsers, objProgress
 
                     }
@@ -76,6 +93,14 @@ xhrC.onload = (event) => { // onload carga un documento y cuando termina lo anal
                 }
                 xhrPro.onerror = getError; //cuando no hay respuesta de la solicitud
                 xhrPro.send();//ejecuta la peticion
+
+
+
+            })
+
+
+
+                
             }
 
         }; 
@@ -102,3 +127,23 @@ xhrC.send();//send envia o ejecuta la peticion
 // // colocando al ID con el nombre 'subtitulo' todo lo de arriba
 // document.getElementById('subtitulo').appendChild(pEleme);
 
+const mostrarDataProgress = (data) => {
+console.log(data)
+
+
+ // muestra el listado general de los cohorts
+ const progreso = document.getElementById('progreso');
+ progreso.innerHTML ="";
+ // cada elemento de array sera recorrido
+ data.forEach(ele => {
+     // selectCohorts inserta en la etiqueta option,el elemento del array,solo el id de los cohorts
+     // muestra todos los id lima mexico brasil
+     progreso.innerHTML +=`Nombre: ${ele.name}<br>
+     Exercises<br>
+     Total:${ele.stats.exercises.total}<br>
+     Completados:${ele.stats.exercises.completed}<br>
+     Porcentaje:${ele.stats.exercises.percent}<br>`;
+ })
+
+
+}
