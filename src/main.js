@@ -4,7 +4,6 @@ const showInformation = document.getElementById('show-information');
 const cohortSelect = document.getElementById('cohortSelect');
 
 
-
 let urlCoh = '../data/cohorts.json';
 
 const getError = () => {
