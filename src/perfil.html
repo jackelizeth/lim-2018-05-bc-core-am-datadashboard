@@ -32,19 +32,67 @@
      </header>
 
      <section>
-        <main class="container-menu">
-          <ul class="menu">
-            <li><a href="#"><i class="fas fa-home"></i>MENU</a>
-            <li><a href="#"><i class="icono izquierda fas fa-map-marker-alt"></i>  SEDE<i class="icono derecha fas fa-chevron-down"></i></a>
-              <section>
-                <form>
-                    <!-- <label >Seleccione su cohort:</label><br>   -->
-                    <select id="listaCohort">
-         
-                    </select>
-                    <br>  
-                </form>
-              </section>
+      <main class="container-menu">
+        <ul class="menu">
+          <li><a href="#"><i class="fas fa-heart"></i> Seleccione su cohort:<i ></i></a>
+            <select id="listaCohort" ></select>
+          <br>  
+     </section>
+     <section class="listaCohort">
+        <form>
+            <label >Name:</label><br>  
+            <select id="listaName">
+              <option value="todo">Todos</option>
+            </select>
+            <br>  
+        </form>
+      </section>
+
+      <section class="ordenar">
+        <form>
+            <label >Ordenar por:</label><br>  
+            <select id="orderBy">
+              <option value="nombre">nombre</option>
+              <option value="porCompTotal">Porcentaje de completitud total</option>
+              <option value="porEjerCorrAuto">Porcentaje de ejercicios corregidos autocompletado</option>
+              <option value="porQuizCompl">Porcentaje de quizzes completados</option>
+              <option value="punQuizzCompl">Puntacion promedio en quizzes completados</option>
+              <option value="porLectComp">Porcentaje de lecturas completadas</option>
+            </select>
+            <br>  
+        </form>
+      </section>
+
+      <section class="direccion">
+        <form>
+            <label >Direccion:</label><br>  
+            <select id="orderDirection">
+                <option value="desc">Descendiente</option>
+                <option value="asc">Ascendiente</option>
+            </select>
+            <br>  
+        </form>
+      </section>
+
+      <section id="progreso">          
+      </section>
+      
+
+
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Nombre y apellido</th>
+                      <th>Completitud General</th>
+                      <th>Completitud de Ejercicios</th>
+                      <th>Completitud de Lecturas</th>
+                      <th>Completitud de Quizzes</th>
+                      <th>Promedio de Quizzes</th>
+                    </tr>
+                  </thead>
+                  <tbody id="container-user">
+                  </tbody>
+                </table>
                 <!-- <ul>
                   <li><a href="#"> Perú </a></li>
                   <li><a href="#"> Chile</a></li>
