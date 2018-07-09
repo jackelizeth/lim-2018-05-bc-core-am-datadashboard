@@ -25,10 +25,12 @@ A pesar de que la data de progreso del LMS (ej. lecturas leídas, ejercicios
 
 De acuerdo a las especificaciones solicitadas para el proyecto, inicimaos con nuestra tabla Scrum, que nos permitira realizar una adecueda planificación en nuestros tiempos.
 
+## Herramientas de organización 
 ![Scrum](src/Imagen/scrum.jpg)
 
 ![Trello](src/Imagen/trello.jpg)
 
+## Sketch de la solución
 ![Boceto](src/Imagen/pagina1.jpg)
 ![Boceto](src/Imagen/pagina%202.jpg)
 
@@ -36,5 +38,6 @@ De acuerdo a las especificaciones solicitadas para el proyecto, inicimaos con nu
 
 El objetivo principal de este proyecto es crear una herramienta web que permita a las Training Managers de Laboratoria verificar el progreso de cada una de las estudiantes mediante la dashboard de una manera fácil y rápida,  permitiendo así optimizar sus tiempos a la hora de  visualizar todos los datos posibles respecto al desempeño de las estudiantes para apoyarlas en su aprendizaje. 
 
+## Prototipo de Alta fidelidad 
 ![Prototipo](src/Imagen/Prototipo-Marvel.jpg)
 
