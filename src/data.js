@@ -302,7 +302,7 @@ window.computeUsersStats = (users, progress, courses) => {
         const arrayCourses = Object.keys(options.cohort[0].coursesIndex);
         // console.log(arrayCourses)
 
-        newUserFilter = filterUsers(options.cohortData.users, options.search)
+        let newUserFilter = filterUsers(options.cohortData.users, options.search)
     //    console.log(newUserFilter)
 
         // sortUsers(newUserFilter, options.orderBy, options.orderDirection)
