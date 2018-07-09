@@ -17,19 +17,12 @@ Nuestro segundo proyecto a desarrollar en nuestro proceso de bootcamp es un Data
 Para realizar la planificación del proyecto, se utilizó un tablero Backlog y un planificador online en la plataforma Trello.
 La planificación se reliza cada vez que termina un sprint.
 
-<<<<<<< HEAD
-## Herramientas de organización 
-=======
 ### Product backlog
->>>>>>> 6d9ec73a86719c82b80632bd555390a532396c66
 ![Scrum](src/Imagen/scrum.jpg)
 
 ### Trello
 ![Trello](src/Imagen/trello.jpg)
 
-<<<<<<< HEAD
-## Sketch de la solución
-=======
 ### Proceso de planeamiento del proyecto
 #### Definición del producto 
 Nuestro proyecto Data Dashboard tiene como finalidad dar una solución a nuestras Training Manager, para hacer un correcto seguimiento a las estudiantes.
@@ -58,7 +51,6 @@ La interfaz le permite a nuestra Training Manager y colaboradores seguir en proc
 ### Primer Sprint 
 
 
->>>>>>> 6d9ec73a86719c82b80632bd555390a532396c66
 ![Boceto](src/Imagen/pagina1.jpg)
 ![Boceto](src/Imagen/pagina%202.jpg)
 
