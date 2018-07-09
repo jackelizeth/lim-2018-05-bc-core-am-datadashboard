@@ -11,6 +11,9 @@ window.computeUsersStats = (users, progress, courses) => {
 
 
 
+
+
+
     /**  funciones de calculos **/
     const calcularExercisesPractice = (objCoursesUserId) => { //{objeto con 3 courses completos}
         // console.log(objCoursesUserId);
@@ -71,6 +74,11 @@ window.computeUsersStats = (users, progress, courses) => {
         
 
 
+
+
+
+
+
     /**  funciones de calculos **/
     const calcularQuizzes = (objCoursesUserId) => { //{objeto con 3 courses completos}
         console.log(objCoursesUserId);
@@ -113,6 +121,11 @@ window.computeUsersStats = (users, progress, courses) => {
 
                                 // totalExercises += 1; // le sumamos 1 para saber cuantas realizo
                                 // completedExercises += exercises.completed; // sumamos y guardamos (exercises-completed)
+                                
+
+
+
+
                                 
 
                                 // if(objKeyValorCaUnoCourses.hasOwnProperty('exercises')){//true si tiene la propiedad exercises
@@ -159,6 +172,14 @@ window.computeUsersStats = (users, progress, courses) => {
 
 
 
+
+
+
+
+
+
+
+
     /** iteramos arrOnlyStudents  **/
   
     const usersWithStats = arrOnlyStudents.map(eleOnlyStudents => {   
@@ -188,6 +209,11 @@ window.computeUsersStats = (users, progress, courses) => {
                         }, 
                 });
     }); 
+
+
+
+
+
     // console.log(usersWithStats)
    
         //  const totalParts = 0;
@@ -198,7 +224,13 @@ window.computeUsersStats = (users, progress, courses) => {
         //  const totalParts = 0;
     return usersWithStats;
 
+
+
 }
+
+
+
+
 
 
 
@@ -231,6 +263,8 @@ window.computeUsersStats = (users, progress, courses) => {
         // }
         
     window.sortUsers = (users, orderBy, orderDirection) => {
+        // console.log(users, orderBy, orderDirection)
+
 
 
         // const ordenandoName = users.sort((ele1, ele2) => {
@@ -254,6 +288,7 @@ window.computeUsersStats = (users, progress, courses) => {
         }
      return  users ;
     }
+
  
     window.processCohortData = (options) => {
         // optionses un objeto
@@ -268,13 +303,16 @@ window.computeUsersStats = (users, progress, courses) => {
         // console.log(arrayCourses)
 
         newUserFilter = filterUsers(options.cohortData.users, options.search)
+    //    console.log(newUserFilter)
 
-        // newUserFilter = sortUsers(newUserFilter, options.orderBy, options.orderDirection)
+        // sortUsers(newUserFilter, options.orderBy, options.orderDirection)
+        // console.log(newUserFilter)
 
         let students = computeUsersStats(newUserFilter, options.cohortData.progress, arrayCourses);
          
         // console.log(students)
         return students;     
+
     }
 
 

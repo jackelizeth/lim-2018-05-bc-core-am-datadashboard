@@ -24,9 +24,8 @@ xhrC.onload = (event) => { // onload carga un documento y cuando termina lo anal
             // muestra todos los id lima mexico brasil
             selectCohorts.innerHTML +=`<option value=${ele.id}>${ele.id}</option>`;
         })
+        selectCohorts.addEventListener('change',(event) => {
 
-
-    selectCohorts.addEventListener('change',(event) => {
 
         let idCohort = event.target.value;//value = lim-2018-03-pre-core-pw
 
@@ -42,7 +41,6 @@ xhrC.onload = (event) => { // onload carga un documento y cuando termina lo anal
                 // const arrayUsers = arraUsers.filter(ele => ele.signupCohort == idCohort);
                 // console.log(arrayUsers)
 
-
             // muestra el listado general de los cohorts
             const listaName = document.getElementById('listaName');
             // cada elemento de array sera recorrido
@@ -51,8 +49,8 @@ xhrC.onload = (event) => { // onload carga un documento y cuando termina lo anal
                 // muestra todos los id lima mexico brasil
                 listaName.innerHTML +=`<option value="${ele.name}">${ele.name}</option>`;
             })
-
             listaName.addEventListener('change',(event) => {
+
                 let textName = document.getElementById("listaName").value;//lim-2018-03-pre-core-pw
 
                 // console.log(textName)
@@ -72,11 +70,12 @@ xhrC.onload = (event) => { // onload carga un documento y cuando termina lo anal
                                                 users       : arraUsers,
                                                 progress    : objProgress,
                                                 },
-                            "orderBy"         : document.getElementById("orderBy").value,
-                            "orderDirection"  : document.getElementById("orderDirection").value,
-                            "search"          : textName
+                            "orderBy"         : document.getElementById('orderBy').value,
+                            "orderDirection"  : document.getElementById('orderDirection').value,
+                            "search"          :  textName
 
                           }
+                        
                          const cohortUsePro = processCohortData(options);// llamar a la funcion
                          mostrarDataProgress(cohortUsePro);
                         //  el objeto options contiene a arrCoh, arraUsers, objProgress
