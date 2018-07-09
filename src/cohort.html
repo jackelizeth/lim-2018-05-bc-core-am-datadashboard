@@ -10,20 +10,59 @@
     <header>
       <img src="img/laboratoria-logo.png">
     </header>
-   
-  <section>
-    <form id="mi_form">
-        <label for="keyword" class="visuallyhidden">Lima Cohort-Octava Generación</label>
-        <input id= "mi_keyword" type="text" name= "search-keyword" placeholder= "e.g.android" required>
-        <input id= "submit-btn" type="submit" value="submit">
-    </form>
-  </section>
 
-  <div class="mi_container">
-      <ul id= "respon_container"></ul>
-    </div>
-    
 
-    <script src="main.js"></script>
+      <section>
+        <form>
+            <label >Seleccione su cohort:</label><br>  
+            <select id="listaCohort">
+            </select>
+            <br>  
+        </form>
+      </section>
+
+      <section>
+        <form>
+            <label >Name:</label><br>  
+            <select id="listaName">
+              <option value="todo">Todos</option>
+            </select>
+            <br>  
+        </form>
+      </section>
+
+      <section>
+        <form>
+            <label >Ordenar por:</label><br>  
+            <select id="orderBy">
+              <option value="nombre">nombre</option>
+              <option value="porCompTotal">Porcentaje de completitud total</option>
+              <option value="porEjerCorrAuto">Porcentaje de ejercicios corregidos autocompletado</option>
+              <option value="porQuizCompl">Porcentaje de quizzes completados</option>
+              <option value="punQuizzCompl">Puntacion promedio en quizzes completados</option>
+              <option value="porLectComp">Porcentaje de lecturas completadas</option>
+            </select>
+            <br>  
+        </form>
+      </section>
+
+      <section>
+        <form>
+            <label >Direccion:</label><br>  
+            <select id="orderDirection">
+                <option value="desc">Descendiente</option>
+                <option value="asc">Ascendiente</option>
+            </select>
+            <br>  
+        </form>
+      </section>
+
+      <section id="progreso">          
+      </section>
+      
+
+      <script src="data.js"></script>
+      <script src="main.js"></script> 
   </body>
 </html>
+
