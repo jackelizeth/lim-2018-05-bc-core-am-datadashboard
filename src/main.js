@@ -109,11 +109,10 @@ const mostrarDataAllUser = (data) => {
     
      // cada elemento de array sera recorrido
     data.forEach(ele => {
-         // selectCohorts inserta en la etiqueta option,el elemento del array,solo el id de los cohorts
-         // muestra todos los id lima mexico brasil
+        
          progreso.innerHTML +=`
-         Nombre: ${ele.name}<br>
-         Exercises<br>
+         NOMBRE: ${ele.name}<br>
+         EXERCISES:<br>
          Total:${ele.stats.exercises.total}<br>
          Completados:${ele.stats.exercises.completed}<br>
          Porcentaje:${ele.stats.exercises.percent}<br>
@@ -121,15 +120,41 @@ const mostrarDataAllUser = (data) => {
     
     });
 
+
+    const read = document.getElementById('read');
+    read.innerHTML ="";
     
+     // cada elemento de array sera recorrido
+    data.forEach(ele => {
+        
+         progreso.innerHTML +=`
+         NOMBRE: ${ele.name}<br>
+         READ:<br>
+         Total:${ele.stats.reads.total}<br>
+         Completados:${ele.stats.reads.completed}<br>
+         Porcentaje:${ele.stats.reads.percent}<br>
+         `;
     
+    });
 
 
-
-
-
-
-
+    const quiz = document.getElementById('quiz');
+    quiz.innerHTML ="";
+    
+     // cada elemento de array sera recorrido
+    data.forEach(ele => {
+         
+         quiz.innerHTML +=`
+         NOMBRE: ${ele.name}<br>
+         QUIZ:<br>
+         Total:${ele.stats.quizzes.total}<br>
+         Completados:${ele.stats.quizzes.completed}<br>
+         Porcentaje:${ele.stats.quizzes.percent}<br>
+         scoreSum:${ele.stats.quizzes.scoreSum}<br>
+         scoreAvg:${ele.stats.quizzes.scoreAvg}<br>
+         `;
+    
+    });
 
 
 }
