@@ -69,7 +69,7 @@ xhrC.onload = (event) => { // onload carga un documento y cuando termina lo anal
                                 "cohort"          :  arrCoh.filter((ele) => {return ele.id == idCohort}),
                                 // filter del arrCoh solo del ele su id comparo con el idCohort (idCohort = lim-2018-03-pre-core-pw) 
                                 // cohort es solo filtro cohort lima [{lim-2018-03-pre-core-pw}] y todo su contenido
-                                "cohortData"      :   {
+                                "cohortData"      : {
                                                     users       : arraUsers,
                                                     progress    : objProgress,
                                                     },
@@ -78,10 +78,17 @@ xhrC.onload = (event) => { // onload carga un documento y cuando termina lo anal
                                 "search"          : textName
 
                             }
-                            const cohortUsePro = processCohortData(options);// llamar a la funcion // el objeto options contiene a arrCoh, arraUsers, objProgress
+                            const cohortUsePro = processCohortData(options);// llamar a la funcion 
                             // console.log(options)
-                            mostrarDataAllUser(cohortUsePro);
-                            console.log(cohortUsePro)
+                            // el objeto options contiene: 
+                            // (cohort : [arrCoh]),
+                            // (cohortData :   { (user : [arraUsers]), (progress : {objProgress})  } )
+                            // orderBy,orderDirection,search
+
+                            newDataAllUser(cohortUsePro);
+                            // console.log(cohortUsePro)  
+                            // cohortUsePro = contiene todo lo que retorna processCohortData
+                            // cohortUsePro contiene el objeto {name, stats :{ percent, exercises ,reads, quizzes}}                
                         
                         }
                     }
@@ -100,17 +107,17 @@ xhrC.onerror = getError;
 xhrC.send();
 
 
-const mostrarDataAllUser = (data) => {
+const newDataAllUser = (data) => {
     // console.log(data)
     
      // muestra el listado general de los cohorts
-    const progreso = document.getElementById('progreso');
-    progreso.innerHTML ="";
+    const progresoExercises = document.getElementById('progresoExerci');
+    progresoExercises.innerHTML ="";
     
      // cada elemento de array sera recorrido
     data.forEach(ele => {
         
-         progreso.innerHTML +=`
+        progresoExercises.innerHTML +=`
          NOMBRE: ${ele.name}<br>
          EXERCISES:<br>
          Total:${ele.stats.exercises.total}<br>
@@ -120,14 +127,13 @@ const mostrarDataAllUser = (data) => {
     
     });
 
-
     const read = document.getElementById('read');
     read.innerHTML ="";
     
      // cada elemento de array sera recorrido
     data.forEach(ele => {
         
-         progreso.innerHTML +=`
+         read.innerHTML +=`
          NOMBRE: ${ele.name}<br>
          READ:<br>
          Total:${ele.stats.reads.total}<br>

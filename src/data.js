@@ -103,15 +103,15 @@ window.computeUsersStats = (users, progress, courses) => {
                 if( objKeyValorCaUnoCourses.hasOwnProperty('type') && objKeyValorCaUnoCourses.type  == 'read') {
                   
                         totalReads++; // se encarga de contar cuantos quiz encuentra cada vez que entra a la condicion IF
-                        console.log(totalReads); 
+                        // console.log(totalReads); 
                         
                         completedReads =+ objKeyValorCaUnoCourses.completed //se encarga de acumular los quizes completados, segun su valor: 1=completado y 0= no completado
-                        console.log(completedReads);   
+                        // console.log(completedReads);   
                 
                 // Math.round() retorna el valor de un número redondeado al entero más cercano.
                 // formula para el porcentaje del avance del alumno
                 percentReads = Math.round((completedReads / totalReads) * 100) + "%";  
-                console.log(percentReads); 
+                // console.log(percentReads); 
 
                 }
           
@@ -278,7 +278,11 @@ window.computeUsersStats = (users, progress, courses) => {
         //                               }
         //    }
         // }
+
         
+    window.sortUsers = (users, orderBy, orderDirection ) => { 
+
+    }   
 
     
     window.filterUsers = (users, search) => { 
@@ -287,6 +291,7 @@ window.computeUsersStats = (users, progress, courses) => {
             return  users.filter(ele => ele.name == search)
         }
      return  users ;
+
     }
 
  
@@ -303,7 +308,7 @@ window.computeUsersStats = (users, progress, courses) => {
         // console.log(arrayCourses)
 
         let newUserFilter = filterUsers(options.cohortData.users, options.search)
-        // console.log(newUserFilter)//muestra el array de user de una alumna, el nombre de alumna que selecciono
+        // console.log(newUserFilter)//muestra el array de users, me seleccionas solo el nombre de alumna que seleccione
 
         // sortUsers(newUserFilter, options.orderBy, options.orderDirection)
         // console.log(newUserFilter)
