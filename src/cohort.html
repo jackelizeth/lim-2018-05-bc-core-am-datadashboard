@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
   <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Data Dashboard</title>
   <link rel="icon" href="Imagen/logo-laboratoria1.ico">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -14,11 +14,11 @@
  
      <header>
       <img class= "logo" src="Imagen/Laboratoria_logo.png" height="80px">
-  
+
       <div class="site-containier"> 
         <ul id="reponse-container"></ul>
       </div>
-  
+
       <div class="usuario"><center> <i class="far fa-user"></i>
          <p>Alejandra</p>
           </center>
@@ -26,11 +26,11 @@
    
       <div class="cerrar"><center><i class="fas fa-power-off"></i>
          <p>cerrar</p>
-        </center>
-       </div>
+          </center>
+      </div>
 
      </header>
-<main>
+     
      <section>
       <main class="container-menu">
         <ul class="menu">
@@ -38,13 +38,14 @@
             <select id="listaCohort" ></select>
           <br>  
      </section>
+
      <section class="listaCohort">
-        <form>
-            <label >Name:</label><br>  
-            <select id="listaName">
-              <option value="todo">Todos</option>
-            </select>
-            <br>  
+      <form>
+         <label >Name:</label><br>  
+          <select id="listaName">
+            <option value="todo">Todos</option>
+          </select>
+          <br>  
         </form>
       </section>
 
@@ -65,10 +66,10 @@
 
       <section class="direccion">
         <form>
-            <label >Direccion:</label><br>  
+          <label >Direccion:</label><br>  
             <select id="orderDirection">
-                <option value="desc">Descendiente</option>
-                <option value="asc">Ascendiente</option>
+            <option value="desc">Descendiente</option>
+            <option value="asc">Ascendiente</option>
             </select>
             <br>  
         </form>
@@ -76,24 +77,22 @@
 
       <section id="progreso">          
       </section>
-      
-
-
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>Nombre y apellido</th>
-                      <th>Completitud General</th>
-                      <th>Completitud de Ejercicios</th>
-                      <th>Completitud de Lecturas</th>
-                      <th>Completitud de Quizzes</th>
-                      <th>Promedio de Quizzes</th>
-                    </tr>
-                  </thead>
-                  <tbody id="container-user">
-                  </tbody>
-                </table>
-                <!-- <ul>
+ 
+       <!-- <table class="table">
+        <thead>
+           <tr>
+             <th>Nombre y apellido</th>
+                <th>Completitud General</th>
+                <th>Completitud de Ejercicios</th>
+                <th>Completitud de Lecturas</th>
+                <th>Completitud de Quizzes</th>
+                <th>Promedio de Quizzes</th>
+           </tr>
+        </thead>
+          <tbody id="container-user">
+          </tbody>
+          </table> -->
+                 <!-- <ul>
                   <li><a href="#"> Perú </a></li>
                   <li><a href="#"> Chile</a></li>
                   <li><a href="#"> México</a></li>
@@ -102,7 +101,7 @@
             </li>
                 <select id="cohortSelect" class="form-control">
                     <option>Escoge cohort...</option>
-                </select>
+                </select> -->
             </div> 
             
             <form>
@@ -111,10 +110,10 @@
         </div>
  
       </section>
-    </main> -->
+   
 
     <script src="data.js"></script>
     <script src="main.js"></script>
     
   </body>
-</html> -->
+</html> 

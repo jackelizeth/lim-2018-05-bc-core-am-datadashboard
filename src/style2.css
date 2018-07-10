@@ -47,7 +47,7 @@ a{
 }
 
 
- .container-menu {                                           
+.container-menu {                                           
     width: 200px;
     min-width: 300px;
     margin: 20px;
@@ -85,17 +85,6 @@ a{
     font-size: 12px;
     line-height: 18px;
 }
-
-.container-menu .menu .icono.izquierda {
-    float: left;
-    margin-right: 10px;
-
-}
-
-.container-menu .menu .icono.derecha {
-    float: right;
-    margin-left: 10px;
-}   
 
 .container-menu .menu ul {
 
