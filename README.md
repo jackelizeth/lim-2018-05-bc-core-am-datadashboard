@@ -17,6 +17,9 @@ Nuestro segundo proyecto a desarrollar en nuestro proceso de bootcamp es un Data
 Para realizar la planificación del proyecto, se utilizó un tablero Backlog y un planificador online en la plataforma Trello.
 La planificación se reliza cada vez que termina un sprint.
 
+## Objetivos 
+El objetivo principal de este proyecto es crear una herramienta web que permita a las Training Managers de Laboratoria verificar el progreso de cada una de las estudiantes mediante la dashboard de una manera fácil y rápida,  permitiendo así optimizar sus tiempos a la hora de  visualizar todos los datos posibles respecto al desempeño de las estudiantes para apoyarlas en su aprendizaje. 
+
 ### Product backlog
 ![Scrum](src/Imagen/scrum.jpg)
 
@@ -28,11 +31,11 @@ La planificación se reliza cada vez que termina un sprint.
 Nuestro proyecto Data Dashboard tiene como finalidad dar una solución a nuestras Training Manager, para hacer un correcto seguimiento a las estudiantes.
 Para ello, realizamos una entrevista personal a nuestra Training Manager (TM) de Lima, Alejandra Ramirez, en la que solicitamos feedback del primer draft elaborado.
 #### Preguntas de nuestra entrevista
-* ¿Quiénes son los principales usuarios de producto?
+* ¿Quiénes seran los principales usuarios del producto?
 
 Las Training Manager de las diferentes sedes de Laboratoria y el equipo de colaboradores.
 
-* ¿Cuáles son los objetivos de estos usuarios en relación con el producto?
+* ¿Qué objetivos tienen con el producto?
 
 Los usuarios esperan encontrar un panel que muestre de manera global los datos de los progresos de las estudiantes con respecto a su promoción, poder ordenarlos y filtrarlos  según su completitud, y realizar búsquedas por nombres, para poder realizar un mejor seguimiento y tomar decisiones acertadas con respecto a que está funcionando y qué no con respecto al aprendizaje del grupo. 
 
@@ -40,7 +43,7 @@ Los usuarios esperan encontrar un panel que muestre de manera global los datos d
 
 Al realizar la entrevista a la TM, ella nos solicitó mostrar de manera clara el porcentaje de completitud de cada alumna en cuanto a ejercicios, lecturas  y cuestionarios en un listado que pueda filtrarse. Con base en ello, trabajamos en nuestro primer prototipo de alta fidelidad en Figma.
 
-* ¿Cuándo revisan normalmente estos datos los usuarios?
+* ¿Con que frecuencia hacen uso del  Data Dashboard?
 
 En fechas clave como al inicio y final de cada Bootcamp y al finalizar cada proyecto, para revisar el progreso de cada alumna.
 
@@ -49,15 +52,29 @@ En fechas clave como al inicio y final de cada Bootcamp y al finalizar cada proy
 La interfaz le permite a nuestra Training Manager y colaboradores seguir en proceso del desempeño de las estudiantes de manera clara y rápida en ella se puede realizar la búsqueda de las alumnas por nombre y filtrar de manera ascendente y descendente según su puntaje, con ello obtenemos una mejor organización, visibilidad en el menor tiempo posible.
 
 ### Primer Sprint 
+Al iniciar el proyecto primero nos enfocamos en entender el readme. Para ello realizamos nuestro backlog.
+![Scrum](src/Imagen/scrum.jpg)
 
-
+Los primeros avances de nuestro primer sprint es nuestro bocetos de baja fidelidad.
 ![Boceto](src/Imagen/pagina1.jpg)
 ![Boceto](src/Imagen/pagina%202.jpg)
 
-## Objetivos 
-
-El objetivo principal de este proyecto es crear una herramienta web que permita a las Training Managers de Laboratoria verificar el progreso de cada una de las estudiantes mediante la dashboard de una manera fácil y rápida,  permitiendo así optimizar sus tiempos a la hora de  visualizar todos los datos posibles respecto al desempeño de las estudiantes para apoyarlas en su aprendizaje. 
-
 ## Prototipo de Alta fidelidad 
+El prototipo de Alta fidelidad que usamos lo implementamos en marvel, pedimos Feedback a nuestro grupo y coach en el proceso de toma de desiciones. 
 ![Prototipo](src/Imagen/Prototipo-Marvel.jpg)
+
+## Recibir Feedback
+Al terminar nuestro primer sprint la cultuta que tomamos en nuestro squad, es dar y recibir feedback. 
+![Feedback](src/Imagen/feedback.jpg)
+
+## Colaboradoras
+* Nancy Montalvo 
+* Jackeline Chavez
+
+## Detalles de Implementación
+- Javascript ES6
+- HTML5
+- CSS3
+- MaRVEL
+
 

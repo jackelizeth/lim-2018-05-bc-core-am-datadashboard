@@ -1,34 +1,4 @@
 window.computeUsersStats = (users, progress, courses) => {
-<<<<<<< HEAD
-    const arrayUsers = users;
-    const objProgress = progress;
-    const arrayCourses = courses;
-
- 
-
-
-
-
-
-
-
-
-
-
-    
-    window.processCohortData = (options) => {
-        const arrayCourses = Object.keys(options.cohort[0].coursesIndex);
-        // del objeto options de la propiedad de los cohort es coursesIndex
-        
-    
-    // console.log(filterUsers(options.cohortData.users, options.search))
-    
-    // sortUsers(options.cohortData.users, options.orderBy, options.orderDirection)
-    
-        computeUsersStats(options.cohortData.users, options.cohortData.progress, arrayCourses);
-    }
-}
-=======
     const objProgress = progress;
     const arrayCourses = courses;
     console.log(users);
@@ -389,4 +359,3 @@ window.computeUsersStats = (users, progress, courses) => {
         //   })
         //   selectName.innerHTML = listaUsuarios
         // }
->>>>>>> 6d9ec73a86719c82b80632bd555390a532396c66
