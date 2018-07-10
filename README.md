@@ -59,7 +59,6 @@ Los primeros avances de nuestro primer sprint es nuestro bocetos de baja fidelid
 ![Boceto](src/Imagen/pagina1.jpg)
 ![Boceto](src/Imagen/pagina%202.jpg)
 
-
 ## Prototipo de Alta fidelidad 
 El prototipo de Alta fidelidad que usamos lo implementamos en marvel, pedimos Feedback a nuestro grupo y coach en el proceso de toma de desiciones. 
 ![Prototipo](src/Imagen/Prototipo-Marvel.jpg)
