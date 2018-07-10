@@ -2,17 +2,13 @@ window.computeUsersStats = (users, progress, courses) => {
     const objProgress = progress;
     const arrayCourses = courses;
     console.log(users);
+    // object keys me devuelven las propiedades del objeto.
     // const arrayProgress = Object.keys(objProgress);
 
     // const arrayUsers = arraUsers.filter(ele => ele.signupCohort == idCohort);
     // let arrStudents = arrayUsers.filter(user => user.role === 'student');
     const arrOnlyStudents = users.filter(eleUser => eleUser.signupCohort === 'lim-2018-03-pre-core-pw');
        // console.log(arrOnlyStudents);//726 estudiantes
-
-
-
-
-
 
     /**  funciones de calculos **/
     const calcularExercisesPractice = (objCoursesUserId) => { //{objeto con 3 courses completos}
