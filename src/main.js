@@ -69,8 +69,6 @@ xhrC.onload = (event) => { // onload carga un documento y cuando termina lo anal
                                 "search"          : document.getElementById('inputStudents').value,
 
 
-
-
                             }
                             const cohortUsePro = processCohortData(options);// llamar a la funcion 
                             // console.log(options)
@@ -101,9 +99,11 @@ xhrC.onerror = getError;
 xhrC.send();
 
 
+
+
+
     const newDataAllUser = (data) => {
     // console.log(data)
-
 
     //  muestra el listado general de los cohorts
     const progresoExercises = document.getElementById('progresoExerci');
@@ -113,7 +113,7 @@ xhrC.send();
     data.forEach(ele => {
         
         progresoExercises.innerHTML +=`
-         NOMBRE: ${ele.name}<br>
+         NOMBRE: ${ele.name}<br><br>
          EXERCISES:<br>
          Total:${ele.stats.exercises.total}<br>
          Completados:${ele.stats.exercises.completed}<br>
@@ -135,10 +135,71 @@ xhrC.send();
     
     });
 
-   
-
-
 }
+
+
+
+
+
+
+    //  // muestra el listado general de los cohorts
+    //  const progresoExercises = document.getElementById('progresoExerci');
+    //  progresoExercises.innerHTML ="";
+     
+    //   // cada elemento de array sera recorrido
+    //  data.forEach(ele => {
+         
+    //      progresoExercises.innerHTML +=`
+    //       NOMBRE: ${ele.name}<br>
+    //       EXERCISES:<br>
+    //       Total:${ele.stats.exercises.total}<br>
+    //       Completados:${ele.stats.exercises.completed}<br>
+    //       Porcentaje:${ele.stats.exercises.percent}<br>
+    //       `;
+     
+    //  });
+ 
+    //  const read = document.getElementById('read');
+    //  read.innerHTML ="";
+     
+    //   // cada elemento de array sera recorrido
+    //  data.forEach(ele => {
+         
+    //       read.innerHTML +=`
+    //       NOMBRE: ${ele.name}<br>
+    //       READ:<br>
+    //       Total:${ele.stats.reads.total}<br>
+    //       Completados:${ele.stats.reads.completed}<br>
+    //       Porcentaje:${ele.stats.reads.percent}<br>
+    //       `;
+     
+    //  });
+ 
+ 
+    //  const quiz = document.getElementById('quiz');
+    //  quiz.innerHTML ="";
+     
+    //   // cada elemento de array sera recorrido
+    //  data.forEach(ele => {
+          
+    //       quiz.innerHTML +=`
+    //       NOMBRE: ${ele.name}<br>
+    //       QUIZ:<br>
+    //       Total:${ele.stats.quizzes.total}<br>
+    //       Completados:${ele.stats.quizzes.completed}<br>
+    //       Porcentaje:${ele.stats.quizzes.percent}<br>
+    //       scoreSum:${ele.stats.quizzes.scoreSum}<br>
+    //       scoreAvg:${ele.stats.quizzes.scoreAvg}<br>
+    //       `;
+     
+    //  });
+//  }
+ 
+
+
+
+
+
 
 
 // // creando nodos 

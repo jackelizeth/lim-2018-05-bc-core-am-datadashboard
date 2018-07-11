@@ -129,10 +129,6 @@ window.computeUsersStats = (users, progress, courses) => {
 
 
 
-
-
-
-
     /**  funciones calcularQuizzes **/
     const calcularQuizzes = (objCoursesUserId) => { //{objeto con 3 courses completos}
         // console.log(objCoursesUserId);
@@ -224,10 +220,7 @@ window.computeUsersStats = (users, progress, courses) => {
             newObjExercises = calcularExercisesPractice(objProgress[eleOnlyStudents.id].intro.units); // llamando a la funcion del calculo de los exercises,  {objeto con 3 propiedades courses completos}
             newObjQuizzes = calcularQuizzes(objProgress[eleOnlyStudents.id].intro.units);
             newObjReads = calcularReads(objProgress[eleOnlyStudents.id].intro.units);
-            // exercises = calcularExercises(objProgress[eleOnlyStudents.id], 'read');
-            // exercises = calcularExercises(objProgress[eleOnlyStudents.id], 'quiz');
-            //  let reads = calcularReads(usersProgress, 'read');
-            //  let quizzes = calcularQuizzes(usersProgress, 'quiz');
+   
             }
 
                 return ({ //retornado el objeto total del Stats por alumno , cvon todas las propiedades solicitadas
@@ -250,45 +243,48 @@ window.computeUsersStats = (users, progress, courses) => {
 
 }
     
-        
-window.sortUsers = (stats, orderBy, orderDirection ) => { 
-        // console.log(stats)
-        // console.log(orderBy)
-        // console.log(orderDirection)
-        let ordenado ;
 
-if(orderBy ==='nombre'){
 
-ordenado = stats.sort((ele1, ele2) => {
-            if (ele1.name > ele2.name) {
-                return 1;
-            }else if (ele1.name < ele2.name) {
-                return -1;
-            }else { 
-                return 0;
-            }
-        });
+
+
+// window.sortUsers = (stats, orderBy, orderDirection ) => { 
+//         console.log(stats)
+//         console.log(orderBy)
+//         console.log(orderDirection)
+//         let ordenado ;
+
+// if(orderBy ==='nombre'){
+
+// ordenado = stats.sort((ele1, ele2) => {
+//             if (ele1.name > ele2.name) {
+//                 return 1;
+//             }else if (ele1.name < ele2.name) {
+//                 return -1;
+//             }else { 
+//                 return 0;
+//             }
+//         });
        
        
 
-}else if(orderBy ==='porCompTotal'){
+// }else if(orderBy ==='porCompTotal'){
 
-    ordenado = stats.sort((ele1, ele2) => {
-        if (ele1.stats.percent > ele2.stats.percent) {
-            return 1;
-        }else if (ele1.stats.percent < ele2.stats.percent) {
-            return -1;
-        }else { 
-            return 0;
-        }
-    });
+//     ordenado = stats.sort((ele1, ele2) => {
+//         if (ele1.stats.percent > ele2.stats.percent) {
+//             return 1;
+//         }else if (ele1.stats.percent < ele2.stats.percent) {
+//             return -1;
+//         }else { 
+//             return 0;
+//         }
+//     });
 
 
-}
+// }
         
- return ordenado;
+//  return ordenado;
 
-}   
+// }   
 
     
     window.filterUsers = (users, search) => { 
@@ -302,6 +298,9 @@ ordenado = stats.sort((ele1, ele2) => {
      return  users ;
     }
  
+
+
+
     window.processCohortData = (options) => {
         // optionses un objeto
         // console.log(options)
@@ -316,10 +315,26 @@ ordenado = stats.sort((ele1, ele2) => {
 
         let students = filterUsers(options.cohortData.users, options.search)
         // console.log(students)
-        
-        stats = computeUsersStats(students, options.cohortData.progress, arrayCourses);
 
-        stats = sortUsers(stats, orderBy, orderDirection )
+
+        students = computeUsersStats(students, options.cohortData.progress, arrayCourses);
+        // console.log(students)
+
+        students = sortUsers(students, orderBy, orderDirection )
+
+
+
+
+
+
+
+        // stats = sortUsers(stats, orderBy, orderDirection )
+        // stats = computeUsersStats(students, options.cohortData.progress, arrayCourses);
+        // stats = sortUsers(stats, orderBy, orderDirection )
+
+
+
+
 
 
         // console.log(students)
@@ -328,7 +343,7 @@ ordenado = stats.sort((ele1, ele2) => {
 
         // console.log(students)//muestra el array de users, me seleccionas solo el nombre de alumna que seleccione
 
-        return stats;     
+        return students;     
 
     }
 
