@@ -62,32 +62,10 @@ section img{
     width: 80px;
 }
 
-section form{
-    width:300px;   
-}
 
-section form input{
-    width: 100%
-}
-
-
-
-div{
-    position: relative; 
-    left: 50%;
-    transform: translateX(-50%);
-    width:300px;   
-}
-
-
-a{
- text-decoration:none;
-}
 ul {
     max-height: 0;
     margin: 0;
     padding: 0;
 
-    }
-
-
+  }

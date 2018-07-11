@@ -4,6 +4,7 @@
 
   <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Data Dashboard</title>
   <link rel="icon" href="Imagen/logo-laboratoria1.ico">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -30,6 +31,77 @@
        </div>
 
      </header>
+
+
+     
+
+     <section>
+      <form>
+          <label >Seleccione su cohort:</label><br>  
+          <select id="listaCohort">
+          </select>
+          <br>  
+      </form>
+    </section>
+
+    <div>
+      <!-- <form id = "SEARCH :" > -->
+        <input id = "inputStudents" ="text" name = "" placeholder="search...">
+        <input id = "btn-search" type="submit" name = "" value="search...">
+      <!-- </form> -->
+    </div>
+
+    <section id="show-student">          
+      </section>
+
+
+    <div id = "listaName" ></div>
+
+    <section>
+      <form>
+          <label >Ordenar por:</label><br>  
+          <select id="orderBy">
+            <option value="nombre">nombre</option>
+            <option value="porCompTotal">Porcentaje de completitud total</option>
+            <option value="porEjerCorrAuto">Porcentaje de ejercicios corregidos autocompletado</option>
+            <option value="porQuizCompl">Porcentaje de quizzes completados</option>
+            <option value="punQuizzCompl">Puntacion promedio en quizzes completados</option>
+            <option value="porLectComp">Porcentaje de lecturas completadas</option>
+          </select>
+          <br>  
+      </form>
+    </section>
+
+    <section>
+      <form>
+          <label >Direccion:</label><br>  
+          <select id="orderDirection">
+              <option value="desc">Descendiente</option>
+              <option value="asc">Ascendiente</option>
+          </select>
+          <br>  
+      </form>
+    </section>
+
+   
+
+    <section id="progresoExerci">          
+    </section>
+
+    <!-- <section id="read">          
+    </section>
+
+    <section id="quiz">          
+    </section> -->
+
+
+
+
+
+
+<!-- 
+
+
 <main>
      <section>
       <main class="container-menu">
@@ -111,10 +183,10 @@
         </div>
  
       </section>
-    </main> -->
+    </main> --> 
 
     <script src="data.js"></script>
     <script src="main.js"></script>
     
   </body>
-</html> -->
+</html> 
