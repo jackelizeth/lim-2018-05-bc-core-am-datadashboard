@@ -320,7 +320,7 @@ window.computeUsersStats = (users, progress, courses) => {
         students = computeUsersStats(students, options.cohortData.progress, arrayCourses);
         // console.log(students)
 
-        students = sortUsers(students, orderBy, orderDirection )
+        // students = sortUsers(students, orderBy, orderDirection )
 
 
 
