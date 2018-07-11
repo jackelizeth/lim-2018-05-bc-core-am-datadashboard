@@ -30,12 +30,106 @@
       </div>
 
      </header>
+
+
      
-      <section>
-        <main class="container-menu">
-          <ul class="menu">
-            <li><a href="#"><i class="fas fa-heart"></i> Seleccione su cohort:<i ></i></a>
-              <select id="listaCohort" ></select>
+
+     <section>
+      <form>
+          <label >Seleccione su cohort:</label><br>  
+          <select id="listaCohort">
+          </select>
+          <br>  
+      </form>
+    </section>
+
+    <div>
+      <!-- <form id = "SEARCH :" > -->
+        <input id = "inputStudents" ="text" name = "" placeholder="search...">
+        <input id = "btn-search" type="submit" name = "" value="search...">
+      <!-- </form> -->
+    </div>
+
+    <section id="show-student">          
+      </section>
+
+
+    <div id = "listaName" ></div>
+
+    <section>
+      <form>
+          <label >Ordenar por:</label><br>  
+          <select id="orderBy">
+            <option value="nombre">nombre</option>
+            <option value="porCompTotal">Porcentaje de completitud total</option>
+            <option value="porEjerCorrAuto">Porcentaje de ejercicios corregidos autocompletado</option>
+            <option value="porQuizCompl">Porcentaje de quizzes completados</option>
+            <option value="punQuizzCompl">Puntacion promedio en quizzes completados</option>
+            <option value="porLectComp">Porcentaje de lecturas completadas</option>
+          </select>
+          <br>  
+      </form>
+    </section>
+
+    <section>
+      <form>
+          <label >Direccion:</label><br>  
+          <select id="orderDirection">
+              <option value="desc">Descendiente</option>
+              <option value="asc">Ascendiente</option>
+          </select>
+          <br>  
+      </form>
+    </section>
+
+   
+
+    <section id="progresoExerci">          
+    </section>
+
+    <!-- <section id="read">          
+    </section>
+
+    <section id="quiz">          
+    </section> -->
+
+
+
+
+
+
+<!-- 
+
+
+<main>
+     <section>
+      <main class="container-menu">
+        <ul class="menu">
+          <li><a href="#"><i class="fas fa-heart"></i> Seleccione su cohort:<i ></i></a>
+            <select id="listaCohort" ></select>
+          <br>  
+     </section>
+     <section class="listaCohort">
+        <form>
+            <label >Name:</label><br>  
+            <select id="listaName">
+              <option value="todo">Todos</option>
+            </select>
+            <br>  
+        </form>
+      </section>
+
+      <section class="ordenar">
+        <form>
+            <label >Ordenar por:</label><br>  
+            <select id="orderBy">
+              <option value="nombre">nombre</option>
+              <option value="porCompTotal">Porcentaje de completitud total</option>
+              <option value="porEjerCorrAuto">Porcentaje de ejercicios corregidos autocompletado</option>
+              <option value="porQuizCompl">Porcentaje de quizzes completados</option>
+              <option value="punQuizzCompl">Puntacion promedio en quizzes completados</option>
+              <option value="porLectComp">Porcentaje de lecturas completadas</option>
+            </select>
             <br>  
       </section>
 
@@ -80,7 +174,10 @@
               </select>
               <br>  
           </form>
-        </section>
+        </div>
+ 
+      </section>
+    </main> --> 
 
         <section id="progreso">          
         </section>
@@ -118,9 +215,5 @@
   
         </section>
     
-
-      <script src="data.js"></script>
-      <script src="main.js"></script>
-      
-    </body>
-  </html> 
+  </body>
+</html> 

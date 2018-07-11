@@ -9,7 +9,7 @@
                         "02-why-learn-to-code": {
                             "duration": 20,
                             "completed": 1,
-                            "type": "read",
+                            "type": "practice",
                             "completedAt": "2018-03-29T05:11:05.809Z"
                         },
                         "01-growth-mindset": {
@@ -3129,6 +3129,7 @@
         }
     },
     "1TT7Q2KjjzeZyTZC0wj92QjfK9E3": {},
+    
     "1WxFqtLqDFNoyoheC2VdaFeuWM42": {
         "intro": {
             "percent": 100,
@@ -75220,7 +75221,7 @@
                             "completedAt": "2018-03-31T00:23:28.661Z",
                             "duration": 30,
                             "completed": 1
-                        },
+                         },
                         "01-ux-design": {
                             "duration": 15,
                             "completed": 1,

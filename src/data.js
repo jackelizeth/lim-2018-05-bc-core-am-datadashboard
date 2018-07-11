@@ -76,7 +76,6 @@ window.computeUsersStats = (users, progress, courses) => {
 
 
 
-
     /**  funciones calcularReads **/
     const calcularReads = (objCoursesUserId) => { //{objeto con 3 courses completos}
         // console.log(objCoursesUserId);
@@ -104,6 +103,7 @@ window.computeUsersStats = (users, progress, courses) => {
                   
                         totalReads++; // se encarga de contar cuantos quiz encuentra cada vez que entra a la condicion IF
                         // console.log(totalReads); 
+                        
                         completedReads =+ objKeyValorCaUnoCourses.completed //se encarga de acumular los quizes completados, segun su valor: 1=completado y 0= no completado
                         // console.log(completedReads);   
                 
@@ -125,10 +125,6 @@ window.computeUsersStats = (users, progress, courses) => {
                                  
     });
     };
-
-
-
-
 
 
 
@@ -216,17 +212,14 @@ window.computeUsersStats = (users, progress, courses) => {
         // objProgress[eleStudents.id]["intro"]
         if(objProgress[eleOnlyStudents.id].hasOwnProperty("intro")){//true
 
-            names = eleOnlyStudents.name.toUpperCase()
+            names = eleOnlyStudents.name.toLowerCase()
             percents = objProgress[eleOnlyStudents.id].intro.percent;
             // console.log(percents)//muestra el valor de percents
     
             newObjExercises = calcularExercisesPractice(objProgress[eleOnlyStudents.id].intro.units); // llamando a la funcion del calculo de los exercises,  {objeto con 3 propiedades courses completos}
             newObjQuizzes = calcularQuizzes(objProgress[eleOnlyStudents.id].intro.units);
             newObjReads = calcularReads(objProgress[eleOnlyStudents.id].intro.units);
-            // exercises = calcularExercises(objProgress[eleOnlyStudents.id], 'read');
-            // exercises = calcularExercises(objProgress[eleOnlyStudents.id], 'quiz');
-            //  let reads = calcularReads(usersProgress, 'read');
-            //  let quizzes = calcularQuizzes(usersProgress, 'quiz');
+   
             }
 
                 return ({ //retornado el objeto total del Stats por alumno , cvon todas las propiedades solicitadas
@@ -248,52 +241,66 @@ window.computeUsersStats = (users, progress, courses) => {
 
 
 }
+    
 
 
-        // const stats = {
 
-        //     userid:   user.id,
-        //     name:   user.name,
-            
-        //     stats   : { 
-        //                 percent     :  totalPercent(user),  
-            
-        //                 exercises   : {
-        //                                 total       :   hhh(),
-        //                                 completed   :   completedExercises(),
-        //                                 percent     :   percentExercises(),
-        //                               },
-        //                 reads       : {
-        //                                 total       :   totalReads(),
-        //                                 completed   :   completedReads(),
-        //                                 percent     :   percentReads(),       
-        //                                },      
-        //                 quizzes     : {
-        //                                 total       :   totalQuizzes(), 
-        //                                 completed   :   completedQuizzes(),
-        //                                 percent     :   percentQuizzes(),
-        //                                 scoreSum    :   scoreSumQuizzes(),
-        //                                 scoreAvg    :   scoreAvgQuizzes(),
-        //                               }
-        //    }
-        // }
 
+// window.sortUsers = (stats, orderBy, orderDirection ) => { 
+//         console.log(stats)
+//         console.log(orderBy)
+//         console.log(orderDirection)
+//         let ordenado ;
+
+// if(orderBy ==='nombre'){
+
+// ordenado = stats.sort((ele1, ele2) => {
+//             if (ele1.name > ele2.name) {
+//                 return 1;
+//             }else if (ele1.name < ele2.name) {
+//                 return -1;
+//             }else { 
+//                 return 0;
+//             }
+//         });
+       
+       
+
+// }else if(orderBy ==='porCompTotal'){
+
+//     ordenado = stats.sort((ele1, ele2) => {
+//         if (ele1.stats.percent > ele2.stats.percent) {
+//             return 1;
+//         }else if (ele1.stats.percent < ele2.stats.percent) {
+//             return -1;
+//         }else { 
+//             return 0;
+//         }
+//     });
+
+
+// }
         
-    window.sortUsers = (users, orderBy, orderDirection ) => { 
+//  return ordenado;
 
-    }   
+// }   
 
     
     window.filterUsers = (users, search) => { 
+        console.log(users)
 
-        if(search!=='todo'){
-            return  users.filter(ele => ele.name == search)
+
+        if(search!==''){
+            return  users.filter(ele => (ele.name.toUpperCase().indexOf(search.toUpperCase())) !== -1)
         }
+
      return  users ;
 
     }
-
  
+
+
+
     window.processCohortData = (options) => {
         // optionses un objeto
         // console.log(options)
@@ -306,36 +313,39 @@ window.computeUsersStats = (users, progress, courses) => {
         const arrayCourses = Object.keys(options.cohort[0].coursesIndex);
         // console.log(arrayCourses)
 
-        let newUserFilter = filterUsers(options.cohortData.users, options.search)
-        // console.log(newUserFilter)//muestra el array de users, me seleccionas solo el nombre de alumna que seleccione
-
-        // sortUsers(newUserFilter, options.orderBy, options.orderDirection)
-        // console.log(newUserFilter)
-
-        let students = computeUsersStats(newUserFilter, options.cohortData.progress, arrayCourses);
+        let students = filterUsers(options.cohortData.users, options.search)
         // console.log(students)
+
+
+        students = computeUsersStats(students, options.cohortData.progress, arrayCourses);
+        // console.log(students)
+
+        // students = sortUsers(students, orderBy, orderDirection )
+
+
+
+
+
+
+
+        // stats = sortUsers(stats, orderBy, orderDirection )
+        // stats = computeUsersStats(students, options.cohortData.progress, arrayCourses);
+        // stats = sortUsers(stats, orderBy, orderDirection )
+
+
+
+
+
+
+        // console.log(students)
+
+        // students = filterUsers(students, options.search)
+
+        // console.log(students)//muestra el array de users, me seleccionas solo el nombre de alumna que seleccione
 
         return students;     
 
     }
-
-
-    // let estudiantes = computeUsersStats(options.cohortData.users, options.cohortData.progress, courses);
-    // estudiantes = sortUsers(estudiantes, options.orderBy, options.orderDirection);
-    // if (options.search !== '') {
-    //   estudiantes = filterUsers(users, search);
-    // }
-    // return estudiantes;
-
-
-    // const search = () => {
-    //     const nuevoUsers = dataUsers.filter((user) => {
-    //       return user.goles > 10
-    //     });
-    //     return nuevoUsers;
-    //   }
-    //   console.log(search());
-    
 
 
 
