@@ -98,7 +98,7 @@ search.addEventListener('click',(event) => {
 xhrC.onerror = getError;
 xhrC.send();
 
-});
+
 
 
  // cada elemento de array sera recorrido
@@ -212,7 +212,7 @@ data.forEach(ele => {
 
 
 
-}
+
 
 
 // // creando nodos 
