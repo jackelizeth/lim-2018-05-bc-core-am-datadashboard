@@ -217,7 +217,7 @@ window.computeUsersStats = (users, progress, courses) => {
         // objProgress[eleStudents.id]["intro"]
         if(objProgress[eleOnlyStudents.id].hasOwnProperty("intro")){//true
 
-            names = eleOnlyStudents.name.toUpperCase()
+            names = eleOnlyStudents.name.toLowerCase()
             percents = objProgress[eleOnlyStudents.id].intro.percent;
             // console.log(percents)//muestra el valor de percents
     
@@ -249,51 +249,58 @@ window.computeUsersStats = (users, progress, courses) => {
 
 
 }
-
-
-        // const stats = {
-
-        //     userid:   user.id,
-        //     name:   user.name,
-            
-        //     stats   : { 
-        //                 percent     :  totalPercent(user),  
-            
-        //                 exercises   : {
-        //                                 total       :   hhh(),
-        //                                 completed   :   completedExercises(),
-        //                                 percent     :   percentExercises(),
-        //                               },
-        //                 reads       : {
-        //                                 total       :   totalReads(),
-        //                                 completed   :   completedReads(),
-        //                                 percent     :   percentReads(),       
-        //                                },      
-        //                 quizzes     : {
-        //                                 total       :   totalQuizzes(), 
-        //                                 completed   :   completedQuizzes(),
-        //                                 percent     :   percentQuizzes(),
-        //                                 scoreSum    :   scoreSumQuizzes(),
-        //                                 scoreAvg    :   scoreAvgQuizzes(),
-        //                               }
-        //    }
-        // }
-
+    
         
-    window.sortUsers = (users, orderBy, orderDirection ) => { 
+window.sortUsers = (stats, orderBy, orderDirection ) => { 
+        // console.log(stats)
+        // console.log(orderBy)
+        // console.log(orderDirection)
+        let ordenado ;
 
-    }   
+if(orderBy ==='nombre'){
+
+ordenado = stats.sort((ele1, ele2) => {
+            if (ele1.name > ele2.name) {
+                return 1;
+            }else if (ele1.name < ele2.name) {
+                return -1;
+            }else { 
+                return 0;
+            }
+        });
+       
+       
+
+}else if(orderBy ==='porCompTotal'){
+
+    ordenado = stats.sort((ele1, ele2) => {
+        if (ele1.stats.percent > ele2.stats.percent) {
+            return 1;
+        }else if (ele1.stats.percent < ele2.stats.percent) {
+            return -1;
+        }else { 
+            return 0;
+        }
+    });
+
+
+}
+        
+ return ordenado;
+
+}   
 
     
     window.filterUsers = (users, search) => { 
+        console.log(users)
 
-        if(search!=='todo'){
-            return  users.filter(ele => ele.name == search)
+
+        if(search!==''){
+            return  users.filter(ele => (ele.name.toUpperCase().indexOf(search.toUpperCase())) !== -1)
         }
+
      return  users ;
-
     }
-
  
     window.processCohortData = (options) => {
         // optionses un objeto
@@ -307,36 +314,23 @@ window.computeUsersStats = (users, progress, courses) => {
         const arrayCourses = Object.keys(options.cohort[0].coursesIndex);
         // console.log(arrayCourses)
 
-        let newUserFilter = filterUsers(options.cohortData.users, options.search)
-        // console.log(newUserFilter)//muestra el array de users, me seleccionas solo el nombre de alumna que seleccione
+        let students = filterUsers(options.cohortData.users, options.search)
+        // console.log(students)
+        
+        stats = computeUsersStats(students, options.cohortData.progress, arrayCourses);
 
-        // sortUsers(newUserFilter, options.orderBy, options.orderDirection)
-        // console.log(newUserFilter)
+        stats = sortUsers(stats, orderBy, orderDirection )
 
-        let students = computeUsersStats(newUserFilter, options.cohortData.progress, arrayCourses);
+
         // console.log(students)
 
-        return students;     
+        // students = filterUsers(students, options.search)
+
+        // console.log(students)//muestra el array de users, me seleccionas solo el nombre de alumna que seleccione
+
+        return stats;     
 
     }
-
-
-    // let estudiantes = computeUsersStats(options.cohortData.users, options.cohortData.progress, courses);
-    // estudiantes = sortUsers(estudiantes, options.orderBy, options.orderDirection);
-    // if (options.search !== '') {
-    //   estudiantes = filterUsers(users, search);
-    // }
-    // return estudiantes;
-
-
-    // const search = () => {
-    //     const nuevoUsers = dataUsers.filter((user) => {
-    //       return user.goles > 10
-    //     });
-    //     return nuevoUsers;
-    //   }
-    //   console.log(search());
-    
 
 
 
