@@ -31,7 +31,7 @@ const search = document.getElementById('btn-search');
 search.addEventListener('click',(event) => {   
 
     let idCohort =  document.getElementById('listaCohort').value;//value = lim-2018-03-pre-core-pw
-    console.log(idCohort);
+    // console.log(idCohort);
 
     const xhrUser = new XMLHttpRequest();
     xhrUser.open('GET',`../data/cohorts/${idCohort}/users.json`);//apertura una conexion //lim-2018-03-pre-core-pw = ${event.target.value} 
