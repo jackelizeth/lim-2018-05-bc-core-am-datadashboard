@@ -62,13 +62,13 @@ a{
 .container-menu ul{
     list-style: none;
 }
-.container-menu ul ul {  
+ .container-menu ul ul {  
     width: 200px;
     opacity: 0;
-    position: absolute;
+    /* position: absolute; */
     visibility: hidden;
     
-  }
+  } 
 .container-menu .menu li a {
     color: #494949;
     display: block;
@@ -96,3 +96,18 @@ a{
     color: #e9e9e9;
     display:block;
 }  
+.listaCohort{
+    width: 200px;
+    min-width: 300px;
+    margin: 20px;
+}
+.ordenar{
+    width: 200px;
+    min-width: 300px;
+    margin: 20px;
+}
+.direccion{
+    width: 200px;
+    min-width: 300px;
+    margin: 20px;
+} 

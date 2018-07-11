@@ -75,6 +75,6 @@ Al terminar nuestro primer sprint la cultuta que tomamos en nuestro squad, es da
 - Javascript ES6
 - HTML5
 - CSS3
-- MaRVEL
+- Marvel
 
 
