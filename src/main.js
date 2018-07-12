@@ -72,19 +72,15 @@ const getError = () => {
                             // console.log(cohortUsePro)  
                             // cohortUsePro = contiene todo lo que retorna processCohortData
                             // cohortUsePro contiene el objeto {name, stats :{ percent, exercises ,reads, quizzes}}                
-                        
                         }
                     }
                     xhrPro.onerror = getError; //cuando no hay respuesta de la solicitud
                     xhrPro.send();//ejecuta la peticion
                 }
-
         }; 
         xhrUser.onerror = getError; 
         xhrUser.send();
-
         };
-
 
         /** etiqueta input boton de search  **/
         const search = document.getElementById('btn-search');
@@ -94,52 +90,42 @@ const getError = () => {
         search.addEventListener('click',SendData);   
         orderBy.addEventListener('change',SendData);   
         orderDirection.addEventListener('change',SendData);   
-
-
 },
-    xhrC.onerror = getError;
-    xhrC.send();
-
-
-
-
+xhrC.onerror = getError;
+xhrC.send();
 
 const newDataAllUser = (data) => {
 console.log(data)
 
-//  muestra el listado general de los cohorts
-const progresoExercises = document.getElementById('progresoExerci');
-progresoExercises.innerHTML ="";
+    //  muestra el listado general de los cohorts
+    const progresoExercises = document.getElementById('progresoExerci');
+    progresoExercises.innerHTML ="";
 
- // cada elemento de array sera recorrido
-data.forEach(ele => {
+    // cada elemento de array sera recorrido
+    data.forEach(ele => {
 
-    
-    progresoExercises.innerHTML +=`
-     NOMBRE: ${ele.name}<br><br>
+        progresoExercises.innerHTML +=`
+        NOMBRE: ${ele.name}<br><br>
 
-     Porcentaje general:${ele.stats.percent}%<br><br>
+        Porcentaje general:${ele.stats.percent}%<br><br>
 
-     EXERCISES:<br>
-     Total:${ele.stats.exercises.total}<br>
-     Completados:${ele.stats.exercises.completed}<br>
-     Porcentaje:${ele.stats.exercises.percent}<br><br>
+        EXERCISES:<br>
+        Total:${ele.stats.exercises.total}<br>
+        Completados:${ele.stats.exercises.completed}<br>
+        Porcentaje:${ele.stats.exercises.percent}<br><br>
 
-     READ:<br>
-     Total:${ele.stats.reads.total}<br>
-     Completados:${ele.stats.reads.completed}<br>
-     Porcentaje:${ele.stats.reads.percent}<br><br>
+        READ:<br>
+        Total:${ele.stats.reads.total}<br>
+        Completados:${ele.stats.reads.completed}<br>
+        Porcentaje:${ele.stats.reads.percent}<br><br>
 
-     QUIZ:<br>
-     Total:${ele.stats.quizzes.total}<br>
-     Completados:${ele.stats.quizzes.completed}<br>
-     Porcentaje:${ele.stats.quizzes.percent}<br>
-     scoreSum:${ele.stats.quizzes.scoreSum}<br>
-     scoreAvg:${ele.stats.quizzes.scoreAvg}<br><br><hr>
-
-     `;
-
-});
-
+        QUIZ:<br>
+        Total:${ele.stats.quizzes.total}<br>
+        Completados:${ele.stats.quizzes.completed}<br>
+        Porcentaje:${ele.stats.quizzes.percent}<br>
+        scoreSum:${ele.stats.quizzes.scoreSum}<br>
+        scoreAvg:${ele.stats.quizzes.scoreAvg}<br><br><hr>
+        `;
+    });
 }
 
