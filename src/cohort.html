@@ -2,52 +2,45 @@
 <html lang="es">
 
   <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data Dashboard</title>
-  <link rel="icon" href="Imagen/logo-laboratoria1.ico">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-  <link rel="stylesheet" href="style2.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Dashboard</title>
+    <link rel="icon" href="Imagen/logo-laboratoria1.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="style2.css" />
   </head>
-
   <body>   
  
-     <header>
+    <header>
       <img class= "logo" src="Imagen/Laboratoria_logo.png" height="80px">
-
+    
       <div class="site-containier"> 
-        <ul id="reponse-container"></ul>
+          <ul id="reponse-container"></ul>
       </div>
-
-      <div class="usuario"><center> <i class="far fa-user"></i>
-         <p>Alejandra</p>
-          </center>
+    
+      <div class="usuario"><center><i class="far fa-user"></i>
+        <p>Alejandra</p>
+        </center>
       </div>
-   
+    
       <div class="cerrar"><center><i class="fas fa-power-off"></i>
-         <p>cerrar</p>
-          </center>
+        <p>cerrar</p>
+        </center>
       </div>
+    </header>
 
-     </header>
-
-
-     
-
-     <section>
+    <section>
       <form>
-          <label >Seleccione su cohort:</label><br>  
+        <label >Seleccione su cohort:</label><br>  
           <select id="listaCohort">
           </select>
-          <br>  
+        <br>  
       </form>
     </section>
 
     <div>
-      <!-- <form id = "SEARCH :" > -->
-        <input id = "inputStudents" ="text" name = "" placeholder="search...">
-        <input id = "btn-search" type="submit" name = "" value="search...">
-      <!-- </form> -->
+      <input id = "inputStudents" ="text" name = "" placeholder="search...">
+      <input id = "btn-search" type="submit" name = "" value="search...">
     </div>
 
     <section id="show-student">          
@@ -58,7 +51,7 @@
 
     <section>
       <form>
-          <label >Ordenar por:</label><br>  
+        <label >Ordenar por:</label><br>  
           <select id="orderBy">
             <option value="nombre">nombre</option>
             <option value="porCompTotal">Porcentaje de completitud total</option>
@@ -73,115 +66,17 @@
 
     <section>
       <form>
-          <label >Direccion:</label><br>  
+        <label >Direccion:</label><br>  
           <select id="orderDirection">
-              <option value="desc">Descendiente</option>
-              <option value="asc">Ascendiente</option>
+            <option value="desc">Descendiente</option>
+            <option value="asc">Ascendiente</option>
           </select>
           <br>  
       </form>
     </section>
-
-   
-
+    
     <section id="progresoExerci">          
-    </section>
-
-    <!-- <section id="read">          
-    </section>
-
-    <section id="quiz">          
-    </section> -->
-
-
-
-
-
-
-<!-- 
-
-
-<main>
-     <section>
-      <main class="container-menu">
-        <ul class="menu">
-          <li><a href="#"><i class="fas fa-heart"></i> Seleccione su cohort:<i ></i></a>
-            <select id="listaCohort" ></select>
-          <br>  
-     </section>
-
-     <section class="listaCohort">
-      <form>
-         <label >Name:</label><br>  
-          <select id="listaName">
-            <option value="todo">Todos</option>
-          </select>
-          <br>  
-        </form>
       </section>
-
-      <section class="ordenar">
-        <form>
-            <label >Ordenar por:</label><br>  
-            <select id="orderBy">
-              <option value="nombre">nombre</option>
-              <option value="porCompTotal">Porcentaje de completitud total</option>
-              <option value="porEjerCorrAuto">Porcentaje de ejercicios corregidos autocompletado</option>
-              <option value="porQuizCompl">Porcentaje de quizzes completados</option>
-              <option value="punQuizzCompl">Puntacion promedio en quizzes completados</option>
-              <option value="porLectComp">Porcentaje de lecturas completadas</option>
-            </select>
-            <br>  
-        </form>
-      </section>
-
-      <section class="direccion">
-        <form>
-          <label >Direccion:</label><br>  
-            <select id="orderDirection">
-            <option value="desc">Descendiente</option>
-            <option value="asc">Ascendiente</option>
-            </select>
-            <br>  
-        </form>
-      </section>
-
-      <section id="progreso">          
-      </section>
- 
-       <!-- <table class="table">
-        <thead>
-           <tr>
-             <th>Nombre y apellido</th>
-                <th>Completitud General</th>
-                <th>Completitud de Ejercicios</th>
-                <th>Completitud de Lecturas</th>
-                <th>Completitud de Quizzes</th>
-                <th>Promedio de Quizzes</th>
-           </tr>
-        </thead>
-          <tbody id="container-user">
-          </tbody>
-          </table> -->
-                 <!-- <ul>
-                  <li><a href="#"> Perú </a></li>
-                  <li><a href="#"> Chile</a></li>
-                  <li><a href="#"> México</a></li>
-                  <li><a href="#"> Sao Paulo </a></li>
-                </ul>
-            </li>
-                <select id="cohortSelect" class="form-control">
-                    <option>Escoge cohort...</option>
-                </select> -->
-            <!-- </div> 
-            
-            <form>
-              <input type="text" id="search-input" name="q" placeholder="Filtrar por nombre">
-          </form>
-        </div>
- 
-      </section>
-    </main> -->  
 
     <script src="data.js"></script>
     <script src="main.js"></script>

@@ -2,17 +2,11 @@ window.computeUsersStats = (users, progress, courses) => {
     const objProgress = progress;
     const arrayCourses = courses;
     // console.log(users);
-    // const arrayProgress = Object.keys(objProgress);
 
     // const arrayUsers = arraUsers.filter(ele => ele.signupCohort == idCohort);
     // let arrStudents = arrayUsers.filter(user => user.role === 'student');
     const arrOnlyStudents = users.filter(eleUser => eleUser.signupCohort === 'lim-2018-03-pre-core-pw');
     //    console.log(arrOnlyStudents);//726 estudiantes
-
-
-
-
-
 
     /**  funciones calcularExercisesPractice **/
     const calcularExercisesPractice = (objCoursesUserId) => { //{objeto con 3 courses completos}
@@ -71,11 +65,6 @@ window.computeUsersStats = (users, progress, courses) => {
                         'percent'     :   percentExercises      
         });
     };
-
-
-
-
-
     /**  funciones calcularReads **/
     const calcularReads = (objCoursesUserId) => { //{objeto con 3 courses completos}
         // console.log(objCoursesUserId);
@@ -111,22 +100,15 @@ window.computeUsersStats = (users, progress, courses) => {
                 // formula para el porcentaje del avance del alumno
                 percentReads = Math.round((completedReads / totalReads) * 100) + "%";  
                 // console.log(percentReads); 
-
                 }
-          
             })
         })
-
-    return ({ // retornando el nuevo objeto con las 3 propiedades por alumno
-            
+        return ({ // retornando el nuevo objeto con las 3 propiedades por alumno
                         'total'        :   totalReads,
                         'completed'    :   completedReads,
-                        'percent'      :   percentReads,     
-                                 
-    });
+                        'percent'      :   percentReads,                
+        });
     };
-
-
 
     /**  funciones calcularQuizzes **/
     const calcularQuizzes = (objCoursesUserId) => { //{objeto con 3 courses completos}
@@ -152,7 +134,6 @@ window.computeUsersStats = (users, progress, courses) => {
                 const objKeyValorCaUnoCourses = objGeneral_6_keysCaUnoCourses.parts[elePart]; // ingresa (parts), ingresa c/u (elePart)  = muestra 5{keys:valor} 4{keys:valor} 7{keys:valor}
                 // console.log(objKeyValorCaUnoCourses); //muestra 5{keys:valor} 4{keys:valor} 7{keys:valor}
 
-                
                 if( objKeyValorCaUnoCourses.hasOwnProperty('type') && objKeyValorCaUnoCourses.type  == 'quiz') {
                   
                         totalQuizzes++; // se encarga de contar cuantos quiz encuentra cada vez que entra a la condicion IF
@@ -164,11 +145,8 @@ window.computeUsersStats = (users, progress, courses) => {
                         if( objKeyValorCaUnoCourses.completed == 1){     // si completado es igual a 1  entra          
                           
                             scoreSumQuizzes =+ objKeyValorCaUnoCourses.score // sumo total de puntuacion score del alumno por cada quiz completado
-                                // console.log(scoreSumQuizzes);                        
-                                        
+                                // console.log(scoreSumQuizzes);                                 
                         }
-                
-                
                 // Math.round() retorna el valor de un número redondeado al entero más cercano.
                 // formula para el porcentaje del avance del alumno
                 percentQuizzes = Math.round((completedQuizzes / totalQuizzes) * 100) + "%";  
@@ -180,33 +158,18 @@ window.computeUsersStats = (users, progress, courses) => {
                 scoreAvgQuizzes =  Math.round(scoreSumQuizzes / totalQuizzes)
                 // console.log(scoreAvgQuizzes);
                 }
-          
             })
         })
-
-
-    return ({ // retornando el nuevo objeto con las 3 propiedades por alumno
-            
+        return ({ // retornando el nuevo objeto con las 3 propiedades por alumno
                         'total'        :   totalQuizzes,
                         'completed'    :   completedQuizzes,
                         'percent'      :   percentQuizzes,     
                         'scoreSum'     :   scoreSumQuizzes,  
                         'scoreAvg'     :   scoreAvgQuizzes                  
-    });
+        });
     };
 
-
-
-
-
-
-
-
-
-
-
     /** iteramos arrOnlyStudents  **/
-  
     const usersWithStats = arrOnlyStudents.map(eleOnlyStudents => {   
         
         // objProgress[eleStudents.id]["intro"]
@@ -219,157 +182,232 @@ window.computeUsersStats = (users, progress, courses) => {
             newObjExercises = calcularExercisesPractice(objProgress[eleOnlyStudents.id].intro.units); // llamando a la funcion del calculo de los exercises,  {objeto con 3 propiedades courses completos}
             newObjQuizzes = calcularQuizzes(objProgress[eleOnlyStudents.id].intro.units);
             newObjReads = calcularReads(objProgress[eleOnlyStudents.id].intro.units);
-   
             }
-
-                return ({ //retornado el objeto total del Stats por alumno , cvon todas las propiedades solicitadas
-                        'name'              :    names,          
-                        'stats'             : {
+            return ({ //retornado el objeto total del Stats por alumno , cvon todas las propiedades solicitadas
+                        'name'          :  names,          
+                        'stats'         :  {
                                             'percent'   : percents,
                                             'exercises' : newObjExercises, //agregando las 3 propiedades del exercises por alumno
                                             'reads'     : newObjReads,
                                             'quizzes'   : newObjQuizzes
                         }, 
-                });
+            });
     }); 
-
-
-    // console.log(usersWithStats)
-
     return usersWithStats;
-
-
-
+    // console.log(usersWithStats)
 }
     
+window.sortUsers = (users, orderBy, orderDirection ) => { 
+        // console.log(users)
+        // console.log(orderBy)
+        // console.log(orderDirection)
+        let ordenado ;
 
+    if(orderBy ==='nombre'){
 
+        ordenado = users.sort((ele1, ele2) => {
 
+            if(orderDirection ==='asc'){
 
-// window.sortUsers = (stats, orderBy, orderDirection ) => { 
-//         console.log(stats)
-//         console.log(orderBy)
-//         console.log(orderDirection)
-//         let ordenado ;
+                if (ele1.name > ele2.name) {
+                    return 1;
+                }else if (ele1.name < ele2.name) {
+                    return -1;
+                }else { 
+                    return 0;
+                }
 
-// if(orderBy ==='nombre'){
+            }else if(orderDirection ==='desc'){
 
-// ordenado = stats.sort((ele1, ele2) => {
-//             if (ele1.name > ele2.name) {
-//                 return 1;
-//             }else if (ele1.name < ele2.name) {
-//                 return -1;
-//             }else { 
-//                 return 0;
-//             }
-//         });
-       
-       
+                if (ele1.name > ele2.name) {
+                    return -1;
+                }else if (ele1.name < ele2.name) {
+                    return 1;
+                }else { 
+                    return 0;
+                }
+                
+            }
+            
+        });
 
-// }else if(orderBy ==='porCompTotal'){
-
-//     ordenado = stats.sort((ele1, ele2) => {
-//         if (ele1.stats.percent > ele2.stats.percent) {
-//             return 1;
-//         }else if (ele1.stats.percent < ele2.stats.percent) {
-//             return -1;
-//         }else { 
-//             return 0;
-//         }
-//     });
-
-
-// }
+    }     
         
-//  return ordenado;
+    if(orderBy ==='porCompTotal'){
 
-// }   
+        ordenado = users.sort((ele1, ele2) => {
 
-    
-    window.filterUsers = (users, search) => { 
-        console.log(users)
+        if(orderDirection ==='asc'){
 
-
-        if(search!==''){
-            return  users.filter(ele => (ele.name.toUpperCase().indexOf(search.toUpperCase())) !== -1)
-        }
-
-     return  users ;
-
-    }
- 
+                if (ele1.stats.percent > ele2.stats.percent) {
+                    return 1;
+                }else if (ele1.stats.percent < ele2.stats.percent) {
+                    return -1;
+                }else { 
+                    return 0;
+                }
+            
+        }else if(orderDirection ==='desc'){
 
 
+                if (ele1.stats.percent > ele2.stats.percent) {
+                    return -1;
+                }else if (ele1.stats.percent < ele2.stats.percent) {
+                    return 1;
+                }else { 
+                    return 0;
+                }
+            }
 
-    window.processCohortData = (options) => {
-        // optionses un objeto
-        // console.log(options)
+        });
 
-        // options.cohort = [{lim-2018-03-pre-core-pw}] y todo su contenido
-        // options.cohort[0] = ingreso a su elemento o propiedad {lim-2018-03-pre-core-pw}y todo su contenido
-        // options.cohort[0].coursesIndex = el (puto) significa que ingreso al objeto y me situo en la propiedad coursesIndex
-        // coursesIndex = me muestra su valor que es {intro: y todo su contenido}
-        // arrayCourses = es con el Object.keyses un [{'intro'}] solo de propiedades
-        const arrayCourses = Object.keys(options.cohort[0].coursesIndex);
-        // console.log(arrayCourses)
-
-        let students = filterUsers(options.cohortData.users, options.search)
-        // console.log(students)
+    }  
 
 
-        students = computeUsersStats(students, options.cohortData.progress, arrayCourses);
-        // console.log(students)
+    if(orderBy ==='porEjerCorrAuto'){
 
-        // students = sortUsers(students, orderBy, orderDirection )
+        ordenado = users.sort((ele1, ele2) => {
 
+            if(orderDirection ==='asc'){
 
+                if (ele1.stats.exercises.percent > ele2.stats.exercises.percent) {
+                    return 1;
+                }else if(ele1.stats.exercises.percent < ele1.stats.exercises.percent) {
+                    return -1;
+                }else { 
+                    return 0;
+                }
 
+            }else if(orderDirection ==='desc'){
 
+                if (ele1.stats.exercises.percent > ele2.stats.exercises.percent) {
+                    return -1;
+                }else if(ele1.stats.exercises.percent < ele1.stats.exercises.percent) {
+                    return 1;
+                }else { 
+                    return 0;
+                }
 
+            }
 
-
-        // stats = sortUsers(stats, orderBy, orderDirection )
-        // stats = computeUsersStats(students, options.cohortData.progress, arrayCourses);
-        // stats = sortUsers(stats, orderBy, orderDirection )
-
-
-
-
-
-
-        // console.log(students)
-
-        // students = filterUsers(students, options.search)
-
-        // console.log(students)//muestra el array de users, me seleccionas solo el nombre de alumna que seleccione
-
-        return students;     
+        });
 
     }
 
+    if(orderBy ==='porQuizCompl'){
 
+        ordenado = users.sort((ele1, ele2) => {
 
+            if(orderDirection ==='asc'){
 
-        // /** los name **/
-        // let arrOnlyStudents = arrayUsers.filter(user => user.signupCohort === 'lim-2018-03-pre-core-pw');
-        // // console.log(arrOnlyStudents)//726 estudiantes
-        // const onlyName = arrOnlyStudents.map(user1 => user1.name);//retorna los nombres
-        // // console.log(onlyName)
-        // const ordenandoName = onlyName.sort((ele1, ele2) => {
-        //       if (ele1 > ele2) {
-        //           return 1;
-        //       }else if (ele1 < ele2) {
-        //           return -1;
-        //       }else { 
-        //           return 0;
-        //       }
-        //   });
-        //   // console.log(ordenandoName);//lista de nombres ordenado
-        // }
-        //   const selectName = document.getElementById('listaName');
-        //   let listaUsuarios = '';
-        //   ordenandoName.map(user2 => {
-        //       listaUsuarios  +=`<option value=${user2}>${user2}</option>`;
-        //   })
-        //   selectName.innerHTML = listaUsuarios
-        // }
+                if (ele1.stats.quizzes.percent > ele2.stats.quizzes.percent) {
+                    return 1;
+                }else if(ele1.stats.quizzes.percent < ele1.stats.quizzes.percent) {
+                    return -1;
+                }else { 
+                    return 0;
+                }
+                
+            }else if(orderDirection ==='desc'){
+
+                if (ele1.stats.quizzes.percent > ele2.stats.quizzes.percent) {
+                    return -1;
+                }else if(ele1.stats.quizzes.percent < ele1.stats.quizzes.percent) {
+                    return 1;
+                }else { 
+                    return 0;
+                }
+
+            }
+
+        });
+
+    }
+
+    if(orderBy ==='punQuizzCompl'){
+
+        ordenado = users.sort((ele1, ele2) => {
+
+            if(orderDirection ==='asc'){
+
+                if (ele1.stats.quizzes.scoreAvg > ele2.stats.quizzes.scoreAvg) {
+                    return 1;
+                }else if(ele1.stats.quizzes.scoreAvg < ele1.stats.quizzes.scoreAvg) {
+                    return -1;
+                }else { 
+                    return 0;
+                }
+
+            }else if(orderDirection ==='desc'){
+
+                if (ele1.stats.quizzes.scoreAvg > ele2.stats.quizzes.scoreAvg) {
+                    return -1;
+                }else if(ele1.stats.quizzes.scoreAvg < ele1.stats.quizzes.scoreAvg) {
+                    return 1;
+                }else { 
+                    return 0;
+                }
+
+            }
+
+        });
+
+    }
+
+    if(orderBy ==='porLectComp'){
+
+        ordenado = users.sort((ele1, ele2) => {
+
+            if(orderDirection ==='asc'){
+
+                if (ele1.stats.reads.percent > ele2.stats.reads.percent) {
+                    return 1;
+                }else if(ele1.stats.reads.percent < ele1.stats.reads.percent) {
+                    return -1;
+                }else { 
+                    return 0;
+                }
+
+            }else if(orderDirection ==='desc'){
+
+                if (ele1.stats.reads.percent > ele2.stats.reads.percent) {
+                    return -1;
+                }else if(ele1.stats.reads.percent < ele1.stats.reads.percent) {
+                    return 1;
+                }else { 
+                    return 0;
+                }
+            }
+
+        });
+
+    }
+ return ordenado;
+}   
+
+window.filterUsers = (users, search) => { 
+    //     console.log(users)
+    if(search!==''){
+        return  users.filter(ele => (ele.name.toUpperCase().indexOf(search.toUpperCase())) !== -1)
+    }
+    return  users ;
+}
+
+window.processCohortData = (options) => {
+    // optionses un objeto
+    // console.log(options)
+
+    // options.cohort = [{lim-2018-03-pre-core-pw}] y todo su contenido
+    // options.cohort[0] = ingreso a su elemento o propiedad {lim-2018-03-pre-core-pw}y todo su contenido
+    // options.cohort[0].coursesIndex = el (puto) significa que ingreso al objeto y me situo en la propiedad coursesIndex
+    // coursesIndex = me muestra su valor que es {intro: y todo su contenido}
+    // arrayCourses = es con el Object.keyses un [{'intro'}] solo de propiedades
+    let arrayCourses = Object.keys(options.cohort[0].coursesIndex);
+    // console.log(arrayCourses)        
+    let users = filterUsers(options.cohortData.users, options.search)
+    users = computeUsersStats(users, options.cohortData.progress, arrayCourses);
+    users = sortUsers(users, options.orderBy, options.orderDirection)
+    // console.log(users, options.orderBy, options.orderDirection)
+    return users;     
+}
+
