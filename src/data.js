@@ -2,17 +2,11 @@ window.computeUsersStats = (users, progress, courses) => {
     const objProgress = progress;
     const arrayCourses = courses;
     // console.log(users);
-    // const arrayProgress = Object.keys(objProgress);
 
     // const arrayUsers = arraUsers.filter(ele => ele.signupCohort == idCohort);
     // let arrStudents = arrayUsers.filter(user => user.role === 'student');
     const arrOnlyStudents = users.filter(eleUser => eleUser.signupCohort === 'lim-2018-03-pre-core-pw');
        // console.log(arrOnlyStudents);//726 estudiantes
-
-
-
-
-
 
     /**  funciones calcularExercisesPractice **/
     const calcularExercisesPractice = (objCoursesUserId) => { //{objeto con 3 courses completos}
@@ -207,7 +201,6 @@ window.computeUsersStats = (users, progress, courses) => {
 
 
     /** iteramos arrOnlyStudents  **/
-  
     const usersWithStats = arrOnlyStudents.map(eleOnlyStudents => {   
         
         // objProgress[eleStudents.id]["intro"]
@@ -247,48 +240,199 @@ window.computeUsersStats = (users, progress, courses) => {
 
 
 
-// window.sortUsers = (stats, orderBy, orderDirection ) => { 
-//         console.log(stats)
-//         console.log(orderBy)
-//         console.log(orderDirection)
-//         let ordenado ;
+window.sortUsers = (users, orderBy, orderDirection ) => { 
+        // console.log(users)
+        // console.log(orderBy)
+        // console.log(orderDirection)
+        let ordenado ;
 
-// if(orderBy ==='nombre'){
+if(orderBy ==='nombre'){
 
-// ordenado = stats.sort((ele1, ele2) => {
-//             if (ele1.name > ele2.name) {
-//                 return 1;
-//             }else if (ele1.name < ele2.name) {
-//                 return -1;
-//             }else { 
-//                 return 0;
-//             }
-//         });
-       
-       
+    ordenado = users.sort((ele1, ele2) => {
 
-// }else if(orderBy ==='porCompTotal'){
+        if(orderDirection ==='asc'){
 
-//     ordenado = stats.sort((ele1, ele2) => {
-//         if (ele1.stats.percent > ele2.stats.percent) {
-//             return 1;
-//         }else if (ele1.stats.percent < ele2.stats.percent) {
-//             return -1;
-//         }else { 
-//             return 0;
-//         }
-//     });
+                if (ele1.name > ele2.name) {
+                    return 1;
+                }else if (ele1.name < ele2.name) {
+                    return -1;
+                }else { 
+                    return 0;
+                }
 
+        }else if(orderDirection ==='desc'){
 
-// }
+            if (ele1.name > ele2.name) {
+                return -1;
+            }else if (ele1.name < ele2.name) {
+                return 1;
+            }else { 
+                return 0;
+            }
+            
+        }
+
+    });
+}     
         
-//  return ordenado;
+    if(orderBy ==='porCompTotal'){
 
-// }   
+        ordenado = users.sort((ele1, ele2) => {
+
+        if(orderDirection ==='asc'){
+
+                if (ele1.stats.percent > ele2.stats.percent) {
+                    return 1;
+                }else if (ele1.stats.percent < ele2.stats.percent) {
+                    return -1;
+                }else { 
+                    return 0;
+                }
+            
+        }else if(orderDirection ==='desc'){
+
+
+                if (ele1.stats.percent > ele2.stats.percent) {
+                    return -1;
+                }else if (ele1.stats.percent < ele2.stats.percent) {
+                    return 1;
+                }else { 
+                    return 0;
+                }
+            }
+
+
+    });
+
+}  
+
+
+if(orderBy ==='porEjerCorrAuto'){
+
+        ordenado = users.sort((ele1, ele2) => {
+
+        if(orderDirection ==='asc'){
+
+            if (ele1.stats.exercises.percent > ele2.stats.exercises.percent) {
+                return 1;
+            }else if(ele1.stats.exercises.percent < ele1.stats.exercises.percent) {
+                return -1;
+            }else { 
+                return 0;
+            }
+
+            
+        }else if(orderDirection ==='desc'){
+
+            if (ele1.stats.exercises.percent > ele2.stats.exercises.percent) {
+                return -1;
+            }else if(ele1.stats.exercises.percent < ele1.stats.exercises.percent) {
+                return 1;
+            }else { 
+                return 0;
+            }
+
+        }
+    });
+
+}
+
+     if(orderBy ==='porQuizCompl'){
+
+        ordenado = users.sort((ele1, ele2) => {
+
+        if(orderDirection ==='asc'){
+
+            if (ele1.stats.quizzes.percent > ele2.stats.quizzes.percent) {
+                return 1;
+            }else if(ele1.stats.quizzes.percent < ele1.stats.quizzes.percent) {
+                return -1;
+            }else { 
+                return 0;
+            }
+            
+        }else if(orderDirection ==='desc'){
+
+            if (ele1.stats.quizzes.percent > ele2.stats.quizzes.percent) {
+                return -1;
+            }else if(ele1.stats.quizzes.percent < ele1.stats.quizzes.percent) {
+                return 1;
+            }else { 
+                return 0;
+            }
+
+        }
+
+    });
+
+     }
+
+    if(orderBy ==='punQuizzCompl'){
+
+        ordenado = users.sort((ele1, ele2) => {
+
+        if(orderDirection ==='asc'){
+
+            if (ele1.stats.quizzes.scoreAvg > ele2.stats.quizzes.scoreAvg) {
+                return 1;
+            }else if(ele1.stats.quizzes.scoreAvg < ele1.stats.quizzes.scoreAvg) {
+                return -1;
+            }else { 
+                return 0;
+            }
+
+        }else if(orderDirection ==='desc'){
+
+            if (ele1.stats.quizzes.scoreAvg > ele2.stats.quizzes.scoreAvg) {
+                return -1;
+            }else if(ele1.stats.quizzes.scoreAvg < ele1.stats.quizzes.scoreAvg) {
+                return 1;
+            }else { 
+                return 0;
+            }
+
+        }
+
+    });
+
+    }
+
+    if(orderBy ==='porLectComp'){
+
+        ordenado = users.sort((ele1, ele2) => {
+
+        if(orderDirection ==='asc'){
+
+            if (ele1.stats.reads.percent > ele2.stats.reads.percent) {
+                return 1;
+            }else if(ele1.stats.reads.percent < ele1.stats.reads.percent) {
+                return -1;
+            }else { 
+                return 0;
+            }
+
+        }else if(orderDirection ==='desc'){
+
+            if (ele1.stats.reads.percent > ele2.stats.reads.percent) {
+                return -1;
+            }else if(ele1.stats.reads.percent < ele1.stats.reads.percent) {
+                return 1;
+            }else { 
+                return 0;
+            }
+        }
+
+    });
+
+    }
+
+ return ordenado;
+
+}   
 
     
     window.filterUsers = (users, search) => { 
-        console.log(users)
+    //     console.log(users)
 
 
         if(search!==''){
@@ -296,9 +440,8 @@ window.computeUsersStats = (users, progress, courses) => {
         }
 
      return  users ;
-    }
- 
 
+    }
 
 
     window.processCohortData = (options) => {
@@ -310,66 +453,19 @@ window.computeUsersStats = (users, progress, courses) => {
         // options.cohort[0].coursesIndex = el (puto) significa que ingreso al objeto y me situo en la propiedad coursesIndex
         // coursesIndex = me muestra su valor que es {intro: y todo su contenido}
         // arrayCourses = es con el Object.keyses un [{'intro'}] solo de propiedades
-        const arrayCourses = Object.keys(options.cohort[0].coursesIndex);
+        let arrayCourses = Object.keys(options.cohort[0].coursesIndex);
         // console.log(arrayCourses)
 
-        let students = filterUsers(options.cohortData.users, options.search)
-        // console.log(students)
+        
+        let users = filterUsers(options.cohortData.users, options.search)
+
+        users = computeUsersStats(users, options.cohortData.progress, arrayCourses);
+
+        users = sortUsers(users, options.orderBy, options.orderDirection)
+        // console.log(users, options.orderBy, options.orderDirection)
 
 
-        students = computeUsersStats(students, options.cohortData.progress, arrayCourses);
-        // console.log(students)
-
-        // students = sortUsers(students, orderBy, orderDirection )
-
-
-
-
-
-
-
-        // stats = sortUsers(stats, orderBy, orderDirection )
-        // stats = computeUsersStats(students, options.cohortData.progress, arrayCourses);
-        // stats = sortUsers(stats, orderBy, orderDirection )
-
-
-
-
-
-
-        // console.log(students)
-
-        // students = filterUsers(students, options.search)
-
-        // console.log(students)//muestra el array de users, me seleccionas solo el nombre de alumna que seleccione
-
-        return students;     
+        return users;     
 
     }
 
-
-
-
-        // /** los name **/
-        // let arrOnlyStudents = arrayUsers.filter(user => user.signupCohort === 'lim-2018-03-pre-core-pw');
-        // // console.log(arrOnlyStudents)//726 estudiantes
-        // const onlyName = arrOnlyStudents.map(user1 => user1.name);//retorna los nombres
-        // // console.log(onlyName)
-        // const ordenandoName = onlyName.sort((ele1, ele2) => {
-        //       if (ele1 > ele2) {
-        //           return 1;
-        //       }else if (ele1 < ele2) {
-        //           return -1;
-        //       }else { 
-        //           return 0;
-        //       }
-        //   });
-        //   // console.log(ordenandoName);//lista de nombres ordenado
-        // }
-        //   const selectName = document.getElementById('listaName');
-        //   let listaUsuarios = '';
-        //   ordenandoName.map(user2 => {
-        //       listaUsuarios  +=`<option value=${user2}>${user2}</option>`;
-        //   })
-        //   selectName.innerHTML = listaUsuarios
-        // }
