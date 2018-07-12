@@ -8,7 +8,7 @@ body{
   }
 
 form img{
-    width: 300px;
+    width: 200px;
     
     }
     
@@ -34,7 +34,7 @@ form{
          padding: 10px;
 }
 
-  .button {
+.button {
         border: none;
         background: #727475;
         color: #f2f2f2;
