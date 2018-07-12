@@ -7,7 +7,7 @@ window.computeUsersStats = (users, progress, courses) => {
     // const arrayUsers = arraUsers.filter(ele => ele.signupCohort == idCohort);
     // let arrStudents = arrayUsers.filter(user => user.role === 'student');
     const arrOnlyStudents = users.filter(eleUser => eleUser.signupCohort === 'lim-2018-03-pre-core-pw');
-       console.log(arrOnlyStudents);//726 estudiantes
+    //    console.log(arrOnlyStudents);//726 estudiantes
 
 
 
