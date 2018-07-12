@@ -184,8 +184,8 @@ window.computeUsersStats = (users, progress, courses) => {
             newObjReads = calcularReads(objProgress[eleOnlyStudents.id].intro.units);
             }
             return ({ //retornado el objeto total del Stats por alumno , cvon todas las propiedades solicitadas
-                        'name'          :  names,          
-                        'stats'         :  {
+                        'name'          :  names,
+                        'stats'         :  { 
                                             'percent'   : percents,
                                             'exercises' : newObjExercises, //agregando las 3 propiedades del exercises por alumno
                                             'reads'     : newObjReads,
