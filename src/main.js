@@ -69,6 +69,7 @@ const getError = () => {
                             // orderBy,orderDirection,search
 
                             newDataAllUser(cohortUsePro);
+
                             // console.log(cohortUsePro)  
                             // cohortUsePro = contiene todo lo que retorna processCohortData
                             // cohortUsePro contiene el objeto {name, stats :{ percent, exercises ,reads, quizzes}}                
@@ -100,11 +101,11 @@ console.log(data)
     //  muestra el listado general de los cohorts
     const progresoExercises = document.getElementById('progresoExerci');
     progresoExercises.innerHTML ="";
-
+    let dataHtml ='';
     // cada elemento de array sera recorrido
     data.forEach(ele => {
 
-        progresoExercises.innerHTML +=`
+        dataHtml   +=`
         NOMBRE: ${ele.name}<br><br>
 
         Porcentaje general:${ele.stats.percent}%<br><br>
@@ -127,5 +128,8 @@ console.log(data)
         scoreAvg:${ele.stats.quizzes.scoreAvg}<br><br><hr>
         `;
     });
+
+
+    progresoExercises.innerHTML = dataHtml;
 }
 

@@ -1,6 +1,6 @@
 window.computeUsersStats = (users, progress, courses) => {
     const objProgress = progress;
-    const arrayCourses = courses;
+    const arrCourses = courses;
     // console.log(users);
 
     // const arrayUsers = arraUsers.filter(ele => ele.signupCohort == idCohort);
@@ -87,22 +87,30 @@ window.computeUsersStats = (users, progress, courses) => {
                 const objKeyValorCaUnoCourses = objGeneral_6_keysCaUnoCourses.parts[elePart]; // ingresa (parts), ingresa c/u (elePart)  = muestra 5{keys:valor} 4{keys:valor} 7{keys:valor}
                 // console.log(objKeyValorCaUnoCourses); //muestra 5{keys:valor} 4{keys:valor} 7{keys:valor}
 
-                
+                // console.log("fuera de read : "+objKeyValorCaUnoCourses);   
                 if( objKeyValorCaUnoCourses.hasOwnProperty('type') && objKeyValorCaUnoCourses.type  == 'read') {
                   
                         totalReads++; // se encarga de contar cuantos quiz encuentra cada vez que entra a la condicion IF
                         // console.log(totalReads); 
                         
-                        completedReads =+ objKeyValorCaUnoCourses.completed //se encarga de acumular los quizes completados, segun su valor: 1=completado y 0= no completado
-                        // console.log(completedReads);   
+                        completedReads += objKeyValorCaUnoCourses.completed //se encarga de acumular los quizes completados, segun su valor: 1=completado y 0= no completado
+                        // console.log("read : "+ objKeyValorCaUnoCourses.completed);   
                 
-                // Math.round() retorna el valor de un número redondeado al entero más cercano.
+               
+                }
+            })
+
+
+
+        })
+
+
+ // Math.round() retorna el valor de un número redondeado al entero más cercano.
                 // formula para el porcentaje del avance del alumno
                 percentReads = Math.round((completedReads / totalReads) * 100) + "%";  
                 // console.log(percentReads); 
-                }
-            })
-        })
+
+
         return ({ // retornando el nuevo objeto con las 3 propiedades por alumno
                         'total'        :   totalReads,
                         'completed'    :   completedReads,
@@ -139,15 +147,20 @@ window.computeUsersStats = (users, progress, courses) => {
                         totalQuizzes++; // se encarga de contar cuantos quiz encuentra cada vez que entra a la condicion IF
                         // console.log(totalQuizzes); 
                         
-                        completedQuizzes =+ objKeyValorCaUnoCourses.completed //se encarga de acumular los quizes completados, segun su valor: 1=completado y 0= no completado
+                        completedQuizzes += objKeyValorCaUnoCourses.completed //se encarga de acumular los quizes completados, segun su valor: 1=completado y 0= no completado
                         // console.log(completedQuizzes);   
                         
                         if( objKeyValorCaUnoCourses.completed == 1){     // si completado es igual a 1  entra          
                           
-                            scoreSumQuizzes =+ objKeyValorCaUnoCourses.score // sumo total de puntuacion score del alumno por cada quiz completado
+                            scoreSumQuizzes += objKeyValorCaUnoCourses.score // sumo total de puntuacion score del alumno por cada quiz completado
                                 // console.log(scoreSumQuizzes);                                 
                         }
-                // Math.round() retorna el valor de un número redondeado al entero más cercano.
+                }
+            })
+        })
+
+
+          // Math.round() retorna el valor de un número redondeado al entero más cercano.
                 // formula para el porcentaje del avance del alumno
                 percentQuizzes = Math.round((completedQuizzes / totalQuizzes) * 100) + "%";  
                 // console.log(percentQuizzes); 
@@ -157,9 +170,8 @@ window.computeUsersStats = (users, progress, courses) => {
                 // promedio de puntuaciones en quizes completados
                 scoreAvgQuizzes =  Math.round(scoreSumQuizzes / totalQuizzes)
                 // console.log(scoreAvgQuizzes);
-                }
-            })
-        })
+
+                
         return ({ // retornando el nuevo objeto con las 3 propiedades por alumno
                         'total'        :   totalQuizzes,
                         'completed'    :   completedQuizzes,
