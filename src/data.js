@@ -1,12 +1,8 @@
 window.computeUsersStats = (users, progress, courses) => {
     const objProgress = progress;
     courses;
-    // console.log(users);
-
-    // const arrayUsers = arraUsers.filter(ele => ele.signupCohort == idCohort);
-    // let arrStudents = arrayUsers.filter(user => user.role === 'student');
     const arrOnlyStudents = users.filter(eleUser => eleUser.signupCohort === 'lim-2018-03-pre-core-pw');
-       // console.log(arrOnlyStudents);//726 estudiantes
+    //    console.log(arrOnlyStudents);//726 estudiantes
 
     /**  funciones calcularExercisesPractice **/
     const calcularExercisesPractice = (objCoursesUserId) => { //{objeto con 3 courses completos}
@@ -94,27 +90,22 @@ window.computeUsersStats = (users, progress, courses) => {
                         // console.log(totalReads); 
                         
                         completedReads += objKeyValorCaUnoCourses.completed //se encarga de acumular los quizes completados, segun su valor: 1=completado y 0= no completado
-                        // console.log("read : "+ objKeyValorCaUnoCourses.completed);   
+                        // console.log(completedReads);   
                 
-               
-                }
+                } 
             })
-
-
-
         })
 
-
- // Math.round() retorna el valor de un número redondeado al entero más cercano.
+         
+                // Math.round() retorna el valor de un número redondeado al entero más cercano.
                 // formula para el porcentaje del avance del alumno
                 percentReads = Math.round((completedReads / totalReads) * 100) + "%";  
-                // console.log(percentReads); 
-
-
+                // console.log(percentReads);
+                
         return ({ // retornando el nuevo objeto con las 3 propiedades por alumno
-                        'total'        :   totalReads,
-                        'completed'    :   completedReads,
-                        'percent'      :   percentReads,                
+                        total:   totalReads,
+                        completed:   completedReads,
+                        percent:   percentReads,                
         });
     };
 
@@ -159,8 +150,7 @@ window.computeUsersStats = (users, progress, courses) => {
             })
         })
 
-
-          // Math.round() retorna el valor de un número redondeado al entero más cercano.
+        // Math.round() retorna el valor de un número redondeado al entero más cercano.
                 // formula para el porcentaje del avance del alumno
                 percentQuizzes = Math.round((completedQuizzes / totalQuizzes) * 100) + "%";  
                 // console.log(percentQuizzes); 
@@ -171,13 +161,12 @@ window.computeUsersStats = (users, progress, courses) => {
                 scoreAvgQuizzes =  Math.round(scoreSumQuizzes / totalQuizzes)
                 // console.log(scoreAvgQuizzes);
 
-                
         return ({ // retornando el nuevo objeto con las 3 propiedades por alumno
-                        'total'        :   totalQuizzes,
-                        'completed'    :   completedQuizzes,
-                        'percent'      :   percentQuizzes,     
-                        'scoreSum'     :   scoreSumQuizzes,  
-                        'scoreAvg'     :   scoreAvgQuizzes                  
+                        total:   totalQuizzes,
+                        completed:   completedQuizzes,
+                        percent:   percentQuizzes,     
+                        scoreSum:   scoreSumQuizzes,  
+                        scoreAvg:   scoreAvgQuizzes                  
         });
     };
 
@@ -196,12 +185,12 @@ window.computeUsersStats = (users, progress, courses) => {
             newObjReads = calcularReads(objProgress[eleOnlyStudents.id].intro.units);
             }
             return ({ //retornado el objeto total del Stats por alumno , cvon todas las propiedades solicitadas
-                        'name'          :  names,          
-                        'stats'         :  {
-                                            'percent'   : percents,
-                                            'exercises' : newObjExercises, //agregando las 3 propiedades del exercises por alumno
-                                            'reads'     : newObjReads,
-                                            'quizzes'   : newObjQuizzes
+                        name          :  names,
+                        stats         :  { 
+                                            percent   : percents,
+                                            exercises : newObjExercises, //agregando las 3 propiedades del exercises por alumno
+                                            reads     : newObjReads,
+                                            quizzes   : newObjQuizzes
                         }, 
             });
     }); 
@@ -251,7 +240,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
         ordenado = users.sort((ele1, ele2) => {
 
-        if(orderDirection ==='ASC'){
+        if(orderDirection ==='DESC'){
 
                 if (ele1.stats.percent > ele2.stats.percent) {
                     return 1;
@@ -261,7 +250,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                     return 0;
                 }
             
-        }else if(orderDirection ==='DESC'){
+        }else if(orderDirection ==='ASC'){
 
 
                 if (ele1.stats.percent > ele2.stats.percent) {
@@ -282,7 +271,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
         ordenado = users.sort((ele1, ele2) => {
 
-            if(orderDirection ==='ASC'){
+            if(orderDirection ==='DESC'){
 
                 if (ele1.stats.exercises.percent > ele2.stats.exercises.percent) {
                     return 1;
@@ -292,7 +281,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                     return 0;
                 }
 
-            }else if(orderDirection ==='DESC'){
+            }else if(orderDirection ==='ASC'){
 
                 if (ele1.stats.exercises.percent > ele2.stats.exercises.percent) {
                     return -1;
@@ -312,7 +301,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
         ordenado = users.sort((ele1, ele2) => {
 
-            if(orderDirection ==='ASC'){
+            if(orderDirection ==='DESC'){
 
                 if (ele1.stats.quizzes.percent > ele2.stats.quizzes.percent) {
                     return 1;
@@ -322,7 +311,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                     return 0;
                 }
                 
-            }else if(orderDirection ==='DESC'){
+            }else if(orderDirection ==='ASC'){
 
                 if (ele1.stats.quizzes.percent > ele2.stats.quizzes.percent) {
                     return -1;
@@ -342,7 +331,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
         ordenado = users.sort((ele1, ele2) => {
 
-            if(orderDirection ==='ASC'){
+            if(orderDirection ==='DESC'){
 
                 if (ele1.stats.quizzes.scoreAvg > ele2.stats.quizzes.scoreAvg) {
                     return 1;
@@ -352,7 +341,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                     return 0;
                 }
 
-            }else if(orderDirection ==='DESC'){
+            }else if(orderDirection ==='ASC'){
 
                 if (ele1.stats.quizzes.scoreAvg > ele2.stats.quizzes.scoreAvg) {
                     return -1;
@@ -372,7 +361,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
         ordenado = users.sort((ele1, ele2) => {
 
-            if(orderDirection ==='ASC'){
+            if(orderDirection ==='DESC'){
 
                 if (ele1.stats.reads.percent > ele2.stats.reads.percent) {
                     return 1;
@@ -382,7 +371,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                     return 0;
                 }
 
-            }else if(orderDirection ==='DESC'){
+            }else if(orderDirection ==='ASC'){
 
                 if (ele1.stats.reads.percent > ele2.stats.reads.percent) {
                     return -1;
@@ -402,7 +391,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 window.filterUsers = (users, search) => { 
     //     console.log(users)
     if(search!==''){
-        return  users.filter(ele => (ele.name.toUpperCase().indexOf(search.toUpperCase())) !== -1)
+       // return  users.filter(ele => (ele.name.toUpperCase().indexOf(search.toUpperCase())) !== -1)
     }
     return  users ;
 }
@@ -417,10 +406,12 @@ window.processCohortData = (options) => {
     // coursesIndex = me muestra su valor que es {intro: y todo su contenido}
     // arrayCourses = es con el Object.keyses un [{'intro'}] solo de propiedades
     let arrayCourses = Object.keys(options.cohort[0].coursesIndex);
-    // console.log(arrayCourses)        
+    // console.log(arrayCourses)
+    
     let users = filterUsers(options.cohortData.users, options.search)
     users = computeUsersStats(users, options.cohortData.progress, arrayCourses);
-    users = sortUsers(users, options.orderBy, options.orderDirection)
+    users = sortUsers(users, options.orderBy, options.orderDirection);
+
     // console.log(users, options.orderBy, options.orderDirection)
     return users;     
 }

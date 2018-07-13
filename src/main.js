@@ -108,10 +108,11 @@ console.log(data)
     
     let dataHtml ='';
 
+    let dataHtml = '';
     // cada elemento de array sera recorrido
     data.forEach(ele => {
 
-        dataHtml   +=`
+        dataHtml +=`
         NOMBRE: ${ele.name}<br><br>
 
         Porcentaje general:${ele.stats.percent}%<br><br>
@@ -135,7 +136,6 @@ console.log(data)
         `;
     });
 
-
-    progresoExercises.innerHTML = dataHtml;
+    progresoExercises.innerHTML =  dataHtml;
 }
 
