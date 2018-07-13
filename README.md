@@ -115,12 +115,14 @@ Para el segundo spint teniamos como pareja el proceso de la solución mas clara,
 * Estudiar el LMS
 * Estudiar como recorrer array 
 En este segundo sprint jalamos la data de los cohort de lima.
+
 ![Scrum](src/Imagen/sprint2.jpg)
 
 ### Tercer Sprint 
 
 En el tercer sprint logramos terminar todas las funciones y pasar los test.
-![Scrum](src/Imagen/sprint2.jpg)
+
+![Scrum](src/Imagen/3%20sprint.jpg)
 
 ## Colaboradoras
 * Nancy Montalvo 
