@@ -106,8 +106,6 @@ console.log(data)
 
     progresoExercises.innerHTML ="";
     
-    let dataHtml ='';
-
     let dataHtml = '';
     // cada elemento de array sera recorrido
     data.forEach(ele => {
