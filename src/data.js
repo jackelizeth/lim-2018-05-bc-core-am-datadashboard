@@ -1,6 +1,6 @@
 window.computeUsersStats = (users, progress, courses) => {
     const objProgress = progress;
-    const arrCourses = courses;
+    courses;
     // console.log(users);
 
     // const arrayUsers = arraUsers.filter(ele => ele.signupCohort == idCohort);
@@ -187,7 +187,7 @@ window.computeUsersStats = (users, progress, courses) => {
         // objProgress[eleStudents.id]["intro"]
         if(objProgress[eleOnlyStudents.id].hasOwnProperty("intro")){//true
 
-            names = eleOnlyStudents.name.toLowerCase()
+            names = eleOnlyStudents.name
             percents = objProgress[eleOnlyStudents.id].intro.percent;
             // console.log(percents)//muestra el valor de percents
     
@@ -205,6 +205,8 @@ window.computeUsersStats = (users, progress, courses) => {
                         }, 
             });
     }); 
+
+
     return usersWithStats;
     // console.log(usersWithStats)
 }
@@ -219,7 +221,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
         ordenado = users.sort((ele1, ele2) => {
 
-            if(orderDirection ==='asc'){
+            if(orderDirection ==='ASC'){
 
                 if (ele1.name > ele2.name) {
                     return 1;
@@ -229,7 +231,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                     return 0;
                 }
 
-            }else if(orderDirection ==='desc'){
+            }else if(orderDirection ==='DESC'){
 
                 if (ele1.name > ele2.name) {
                     return -1;
@@ -249,7 +251,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
         ordenado = users.sort((ele1, ele2) => {
 
-        if(orderDirection ==='asc'){
+        if(orderDirection ==='ASC'){
 
                 if (ele1.stats.percent > ele2.stats.percent) {
                     return 1;
@@ -259,7 +261,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                     return 0;
                 }
             
-        }else if(orderDirection ==='desc'){
+        }else if(orderDirection ==='DESC'){
 
 
                 if (ele1.stats.percent > ele2.stats.percent) {
@@ -280,7 +282,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
         ordenado = users.sort((ele1, ele2) => {
 
-            if(orderDirection ==='asc'){
+            if(orderDirection ==='ASC'){
 
                 if (ele1.stats.exercises.percent > ele2.stats.exercises.percent) {
                     return 1;
@@ -290,7 +292,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                     return 0;
                 }
 
-            }else if(orderDirection ==='desc'){
+            }else if(orderDirection ==='DESC'){
 
                 if (ele1.stats.exercises.percent > ele2.stats.exercises.percent) {
                     return -1;
@@ -310,7 +312,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
         ordenado = users.sort((ele1, ele2) => {
 
-            if(orderDirection ==='asc'){
+            if(orderDirection ==='ASC'){
 
                 if (ele1.stats.quizzes.percent > ele2.stats.quizzes.percent) {
                     return 1;
@@ -320,7 +322,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                     return 0;
                 }
                 
-            }else if(orderDirection ==='desc'){
+            }else if(orderDirection ==='DESC'){
 
                 if (ele1.stats.quizzes.percent > ele2.stats.quizzes.percent) {
                     return -1;
@@ -340,7 +342,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
         ordenado = users.sort((ele1, ele2) => {
 
-            if(orderDirection ==='asc'){
+            if(orderDirection ==='ASC'){
 
                 if (ele1.stats.quizzes.scoreAvg > ele2.stats.quizzes.scoreAvg) {
                     return 1;
@@ -350,7 +352,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                     return 0;
                 }
 
-            }else if(orderDirection ==='desc'){
+            }else if(orderDirection ==='DESC'){
 
                 if (ele1.stats.quizzes.scoreAvg > ele2.stats.quizzes.scoreAvg) {
                     return -1;
@@ -370,7 +372,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
         ordenado = users.sort((ele1, ele2) => {
 
-            if(orderDirection ==='asc'){
+            if(orderDirection ==='ASC'){
 
                 if (ele1.stats.reads.percent > ele2.stats.reads.percent) {
                     return 1;
@@ -380,7 +382,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                     return 0;
                 }
 
-            }else if(orderDirection ==='desc'){
+            }else if(orderDirection ==='DESC'){
 
                 if (ele1.stats.reads.percent > ele2.stats.reads.percent) {
                     return -1;

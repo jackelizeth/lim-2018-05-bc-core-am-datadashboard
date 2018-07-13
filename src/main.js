@@ -9,6 +9,8 @@ const getError = () => {
     xhrC.open('GET', urlCoh); //apertura una conexion
     xhrC.onload = (event) => { // onload carga un documento y cuando termina lo analiza //funcion anonima
 
+        if (event.target.readyState == 4 && event.target.status == 200) {
+
         const arrCoh = JSON.parse(event.target.response);
 
         /** etiqueta select listado general de los cohorts **/
@@ -74,13 +76,13 @@ const getError = () => {
                             // cohortUsePro = contiene todo lo que retorna processCohortData
                             // cohortUsePro contiene el objeto {name, stats :{ percent, exercises ,reads, quizzes}}                
                         }
-                    }
-                    xhrPro.onerror = getError; //cuando no hay respuesta de la solicitud
-                    xhrPro.send();//ejecuta la peticion
+                        }
+                        xhrPro.onerror = getError; //cuando no hay respuesta de la solicitud
+                        xhrPro.send();//ejecuta la peticion
                 }
-        }; 
-        xhrUser.onerror = getError; 
-        xhrUser.send();
+                }; 
+                xhrUser.onerror = getError; 
+                xhrUser.send();
         };
 
         /** etiqueta input boton de search  **/
@@ -91,6 +93,7 @@ const getError = () => {
         search.addEventListener('click',SendData);   
         orderBy.addEventListener('change',SendData);   
         orderDirection.addEventListener('change',SendData);   
+    }
 },
 xhrC.onerror = getError;
 xhrC.send();
@@ -100,8 +103,11 @@ console.log(data)
 
     //  muestra el listado general de los cohorts
     const progresoExercises = document.getElementById('progresoExerci');
+
     progresoExercises.innerHTML ="";
+    
     let dataHtml ='';
+
     // cada elemento de array sera recorrido
     data.forEach(ele => {
 
