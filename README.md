@@ -27,23 +27,28 @@ El objetivo principal de este proyecto es crear una herramienta web que permita 
 ![Trello](src/Imagen/trello.jpg)
 
 ### Proceso de planeamiento del proyecto
-#### Definición del producto 
+
+### User Experience Design
+
+#### 1) Definición del producto
+
 Nuestro proyecto Data Dashboard tiene como finalidad dar una solución a nuestras Training Manager, para hacer un correcto seguimiento a las estudiantes.
 Para ello, realizamos una entrevista personal a nuestra Training Manager (TM) de Lima, Alejandra Ramirez, en la que solicitamos feedback del primer draft elaborado.
+
 #### Preguntas de nuestra entrevista
-* ¿Quiénes seran los principales usuarios del producto?
+* ¿Quiénes son los principales usuarios de producto?
 
 Las Training Manager de las diferentes sedes de Laboratoria y el equipo de colaboradores.
 
-* ¿Qué objetivos tienen con el producto?
+* ¿Cuáles son los objetivos de estos usuarios en relación con el producto?
 
 Los usuarios esperan encontrar un panel que muestre de manera global los datos de los progresos de las estudiantes con respecto a su promoción, poder ordenarlos y filtrarlos  según su completitud, y realizar búsquedas por nombres, para poder realizar un mejor seguimiento y tomar decisiones acertadas con respecto a que está funcionando y qué no con respecto al aprendizaje del grupo. 
 
-* ¿Cuáles son los datos más relevantes que quieren ver en la interfaz y por qué?
+* ¿ Cuáles son los datos más relevantes que quieren ver en la interfaz y por qué?
 
 Al realizar la entrevista a la TM, ella nos solicitó mostrar de manera clara el porcentaje de completitud de cada alumna en cuanto a ejercicios, lecturas  y cuestionarios en un listado que pueda filtrarse. Con base en ello, trabajamos en nuestro primer prototipo de alta fidelidad en Figma.
 
-* ¿Con que frecuencia hacen uso del  Data Dashboard?
+* ¿Cuándo revisan normalmente estos datos los usuarios?
 
 En fechas clave como al inicio y final de cada Bootcamp y al finalizar cada proyecto, para revisar el progreso de cada alumna.
 
@@ -51,21 +56,68 @@ En fechas clave como al inicio y final de cada Bootcamp y al finalizar cada proy
 
 La interfaz le permite a nuestra Training Manager y colaboradores seguir en proceso del desempeño de las estudiantes de manera clara y rápida en ella se puede realizar la búsqueda de las alumnas por nombre y filtrar de manera ascendente y descendente según su puntaje, con ello obtenemos una mejor organización, visibilidad en el menor tiempo posible.
 
-### Primer Sprint 
-Al iniciar el proyecto primero nos enfocamos en entender el readme. Para ello realizamos nuestro backlog.
-![Scrum](src/Imagen/scrum.jpg)
+#### 2) Sketch de la solución (prototipo de baja fidelidad)
 
-Los primeros avances de nuestro primer sprint es nuestro bocetos de baja fidelidad.
 ![Boceto](src/Imagen/pagina1.jpg)
+
 ![Boceto](src/Imagen/pagina%202.jpg)
+
+#### 3) Diseño de la Interfaz de Usuario (prototipo de alta fidelidad)
 
 ## Prototipo de Alta fidelidad 
 El prototipo de Alta fidelidad que usamos lo implementamos en marvel, pedimos Feedback a nuestro grupo y coach en el proceso de toma de desiciones. 
 ![Prototipo](src/Imagen/Prototipo-Marvel.jpg)
 
+### Implementación de la Interfaz de Usuario (HTML/CSS/JS)
+
+Luego de diseñar tu interfaz de usuario deberás trabajar en su implementación.
+Como mencionamos, **no** es necesario que construyas la interfaz tal como la
+diseñaste. Tendrás un tiempo limitado para hackear, así es que deberás priorizar.
+
+Como mínimo, tu implementación debe:
+
+1. Permitir al usuario seleccionar un cohort de una lista de cohorts.
+2. Al seleccionar un cohort:
+   - Listar las estudiantes de ese cohort
+   - Para cada estudiante:
+     + Calcular porcentaje de completitud de todos los _cursos_.
+     + Calcular grado de completitud de _lecturas_, _ejercicios autocorregidos_,
+       y _quizzes_.
+   - Ordenar estudiantes por completitud _general_ (porcentaje consumido/completado
+     de todos los cursos del cohort en cuestión), de _lecturas_, _ejercicios
+     autocorregidos_ y _quizzes_.
+   - Filtrar/buscar estudiantes por nombre.
+3. Visualizarse sin problemas desde distintos tamaños de pantallas: móviles,
+   tablets y desktops.
+4. Incluir pruebas unitarias.
+
+Es importante que tu interfaz, a pesar de ser una versión mínima de tu ideal,
+igual debe seguir los fundamentos de visual design, como: contraste,
+alineación, jerarquía, entre otros.
+
+### Primer Sprint 
+
+Al iniciar el proyecto primero nos enfocamos en entender el readme. Para ello realizamos nuestro backlog.
+
+![Scrum](src/Imagen/scrum.jpg)
+
+Los primeros avances de nuestro primer sprint es nuestro bocetos de baja fidelidad.
+
 ## Recibir Feedback
 Al terminar nuestro primer sprint la cultuta que tomamos en nuestro squad, es dar y recibir feedback. 
+
 ![Feedback](src/Imagen/feedback.jpg)
+
+
+### Segundo Sprint 
+
+Para el segundo spint teniamos como pareja el proceso de la solución mas clara, para ello nos planteamos metas que nos permitiera lograr nuestros objetivos.
+* Estudiar el LMS
+* Estudiar como recorrer array 
+
+![Scrum](src/Imagen/.jpg)
+
+
 
 ## Colaboradoras
 * Nancy Montalvo 
