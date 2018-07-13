@@ -77,7 +77,7 @@ window.computeUsersStats = (users, progress, courses) => {
             // console.log(objGeneral_6_keysCaUnoCourses); // muestra 3 {6 keys} por course
 
             // console.log(objGeneral_6_keysCaUnoCourses.parts); //ingresa (parts) c/u course = muestra 1er-parts{5 keys}, 2er-parts {4 keys}, 3er-parts {7 keys} 
-/* 
+
             Object.keys(objGeneral_6_keysCaUnoCourses.parts).map(elePart =>{ // [] mapea cada elePart 
 
                 const objKeyValorCaUnoCourses = objGeneral_6_keysCaUnoCourses.parts[elePart]; // ingresa (parts), ingresa c/u (elePart)  = muestra 5{keys:valor} 4{keys:valor} 7{keys:valor}
@@ -89,16 +89,19 @@ window.computeUsersStats = (users, progress, courses) => {
                         totalReads++; // se encarga de contar cuantos quiz encuentra cada vez que entra a la condicion IF
                         // console.log(totalReads); 
                         
-                        completedReads =+ objKeyValorCaUnoCourses.completed //se encarga de acumular los quizes completados, segun su valor: 1=completado y 0= no completado
+                        completedReads += objKeyValorCaUnoCourses.completed //se encarga de acumular los quizes completados, segun su valor: 1=completado y 0= no completado
                         // console.log(completedReads);   
                 
+                } 
+            })
+        })
+
+         
                 // Math.round() retorna el valor de un número redondeado al entero más cercano.
                 // formula para el porcentaje del avance del alumno
                 percentReads = Math.round((completedReads / totalReads) * 100) + "%";  
-                // console.log(percentReads); 
-                } 
-            })*/
-        })
+                // console.log(percentReads);
+                
         return ({ // retornando el nuevo objeto con las 3 propiedades por alumno
                         total:   totalReads,
                         completed:   completedReads,
@@ -135,15 +138,19 @@ window.computeUsersStats = (users, progress, courses) => {
                         totalQuizzes++; // se encarga de contar cuantos quiz encuentra cada vez que entra a la condicion IF
                         // console.log(totalQuizzes); 
                         
-                        completedQuizzes =+ objKeyValorCaUnoCourses.completed //se encarga de acumular los quizes completados, segun su valor: 1=completado y 0= no completado
+                        completedQuizzes += objKeyValorCaUnoCourses.completed //se encarga de acumular los quizes completados, segun su valor: 1=completado y 0= no completado
                         // console.log(completedQuizzes);   
                         
                         if( objKeyValorCaUnoCourses.completed == 1){     // si completado es igual a 1  entra          
                           
-                            scoreSumQuizzes =+ objKeyValorCaUnoCourses.score // sumo total de puntuacion score del alumno por cada quiz completado
+                            scoreSumQuizzes += objKeyValorCaUnoCourses.score // sumo total de puntuacion score del alumno por cada quiz completado
                                 // console.log(scoreSumQuizzes);                                 
                         }
-                // Math.round() retorna el valor de un número redondeado al entero más cercano.
+                }
+            })
+        })
+
+        // Math.round() retorna el valor de un número redondeado al entero más cercano.
                 // formula para el porcentaje del avance del alumno
                 percentQuizzes = Math.round((completedQuizzes / totalQuizzes) * 100) + "%";  
                 // console.log(percentQuizzes); 
@@ -153,9 +160,7 @@ window.computeUsersStats = (users, progress, courses) => {
                 // promedio de puntuaciones en quizes completados
                 scoreAvgQuizzes =  Math.round(scoreSumQuizzes / totalQuizzes)
                 // console.log(scoreAvgQuizzes);
-                }
-            })
-        })
+
         return ({ // retornando el nuevo objeto con las 3 propiedades por alumno
                         total:   totalQuizzes,
                         completed:   completedQuizzes,
@@ -233,7 +238,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
         ordenado = users.sort((ele1, ele2) => {
 
-        if(orderDirection ==='ASC'){
+        if(orderDirection ==='DESC'){
 
                 if (ele1.stats.percent > ele2.stats.percent) {
                     return 1;
@@ -243,7 +248,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                     return 0;
                 }
             
-        }else if(orderDirection ==='DESC'){
+        }else if(orderDirection ==='ASC'){
 
 
                 if (ele1.stats.percent > ele2.stats.percent) {
@@ -264,7 +269,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
         ordenado = users.sort((ele1, ele2) => {
 
-            if(orderDirection ==='ASC'){
+            if(orderDirection ==='DESC'){
 
                 if (ele1.stats.exercises.percent > ele2.stats.exercises.percent) {
                     return 1;
@@ -274,7 +279,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                     return 0;
                 }
 
-            }else if(orderDirection ==='DESC'){
+            }else if(orderDirection ==='ASC'){
 
                 if (ele1.stats.exercises.percent > ele2.stats.exercises.percent) {
                     return -1;
@@ -294,7 +299,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
         ordenado = users.sort((ele1, ele2) => {
 
-            if(orderDirection ==='ASC'){
+            if(orderDirection ==='DESC'){
 
                 if (ele1.stats.quizzes.percent > ele2.stats.quizzes.percent) {
                     return 1;
@@ -304,7 +309,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                     return 0;
                 }
                 
-            }else if(orderDirection ==='DESC'){
+            }else if(orderDirection ==='ASC'){
 
                 if (ele1.stats.quizzes.percent > ele2.stats.quizzes.percent) {
                     return -1;
@@ -324,7 +329,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
         ordenado = users.sort((ele1, ele2) => {
 
-            if(orderDirection ==='ASC'){
+            if(orderDirection ==='DESC'){
 
                 if (ele1.stats.quizzes.scoreAvg > ele2.stats.quizzes.scoreAvg) {
                     return 1;
@@ -334,7 +339,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                     return 0;
                 }
 
-            }else if(orderDirection ==='DESC'){
+            }else if(orderDirection ==='ASC'){
 
                 if (ele1.stats.quizzes.scoreAvg > ele2.stats.quizzes.scoreAvg) {
                     return -1;
@@ -354,7 +359,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
         ordenado = users.sort((ele1, ele2) => {
 
-            if(orderDirection ==='ASC'){
+            if(orderDirection ==='DESC'){
 
                 if (ele1.stats.reads.percent > ele2.stats.reads.percent) {
                     return 1;
@@ -364,7 +369,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                     return 0;
                 }
 
-            }else if(orderDirection ==='DESC'){
+            }else if(orderDirection ==='ASC'){
 
                 if (ele1.stats.reads.percent > ele2.stats.reads.percent) {
                     return -1;

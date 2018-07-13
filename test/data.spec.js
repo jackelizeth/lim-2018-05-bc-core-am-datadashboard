@@ -89,15 +89,15 @@ describe('data', () => {
         },
         reads      : {
           total    :   11,
-          completed:   1,
-          percent  :   9
+          completed:   11,
+          percent  :   100
         },
         quizzes   : {
           total   :   3,
-          completed:  1,
-          percent  :  33,     
-          scoreSum :  84,  
-          scoreAvg :  28  
+          completed:  3,
+          percent  :  100,     
+          scoreSum :  242,  
+          scoreAvg :  81  
         }
 
       }  
@@ -115,15 +115,15 @@ describe('data', () => {
         },
         reads: {
           total    :   11,
-          completed:   1,
-          percent  :   9
+          completed:   11,
+          percent  :   100
         },
         quizzes   : {
           total   :   3,
-          completed:  1,
-          percent  :  33,     
-          scoreSum :  75,  
-          scoreAvg :  25  
+          completed:  3,
+          percent  :  100,     
+          scoreSum :  263,  
+          scoreAvg :  88  
         }
 
       }  
@@ -140,15 +140,15 @@ describe('data', () => {
         },
         reads      : {
           total    :   11,
-          completed:   0,
-          percent  :   0
+          completed:   8,
+          percent  :   73
         },
         quizzes: {
           total:   3,
-          completed:  0,
-          percent  :  0,     
-          scoreSum :  90,  
-          scoreAvg :  30  
+          completed:  2,
+          percent  :  67,     
+          scoreSum :  170,  
+          scoreAvg :  57
         }
 
       }  
@@ -209,15 +209,15 @@ describe('data', () => {
         },
         reads      : {
           total    :   11,
-          completed:   1,
-          percent  :   9
+          completed:   11,
+          percent  :   100
         },
         quizzes   : {
           total   :   3,
-          completed:  1,
-          percent  :  33,     
-          scoreSum :  84,  
-          scoreAvg :  28  
+          completed:  3,
+          percent  :  100,     
+          scoreSum :  242,  
+          scoreAvg :  81  
         }
 
       }  
@@ -235,15 +235,15 @@ describe('data', () => {
         },
         reads: {
           total    :   11,
-          completed:   1,
-          percent  :   9
+          completed:   11,
+          percent  :   100
         },
         quizzes   : {
           total   :   3,
-          completed:  1,
-          percent  :  33,     
-          scoreSum :  75,  
-          scoreAvg :  25  
+          completed:  3,
+          percent  :  100,     
+          scoreSum :  263,  
+          scoreAvg :  88  
         }
 
       }  
@@ -260,15 +260,15 @@ describe('data', () => {
         },
         reads      : {
           total    :   11,
-          completed:   0,
-          percent  :   0
+          completed:   8,
+          percent  :   73
         },
         quizzes: {
           total:   3,
-          completed:  0,
-          percent  :  0,     
-          scoreSum :  90,  
-          scoreAvg :  30  
+          completed:  2,
+          percent  :  67,     
+          scoreSum :  170,  
+          scoreAvg :  57
         }
 
       }  
