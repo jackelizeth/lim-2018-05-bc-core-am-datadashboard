@@ -132,7 +132,7 @@ describe('data', () => {
     let user3 = {
       stats: {
 
-        name: 'allison',
+        name: 'Allison Ramirez',
         exercises: { 
           total:   2,
          completed :   1,
@@ -252,7 +252,7 @@ describe('data', () => {
     let user3 = {
       stats: {
 
-        name: 'allison',
+        name: 'Allison Ramirez',
         exercises: { 
           total:   2,
          completed :   1,
@@ -287,9 +287,9 @@ describe('data', () => {
     const options = {
       cohort         : fixtures.cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw'), 
       cohortData     : fixtures,
-      orderBy        : 'name',
+      orderBy        : 'nombre',
       orderDirection : 'ASC',
-      search         : 'allison'
+      search         : 'Allison Ramirez'
   };
 
     it('debería retornar arreglo de usuarios con propiedad stats y aplicar sort y filter',() => {

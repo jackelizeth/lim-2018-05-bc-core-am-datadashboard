@@ -71,7 +71,6 @@ const getError = () => {
                             // orderBy,orderDirection,search
 
                             newDataAllUser(cohortUsePro);
-
                             // console.log(cohortUsePro)  
                             // cohortUsePro = contiene todo lo que retorna processCohortData
                             // cohortUsePro contiene el objeto {name, stats :{ percent, exercises ,reads, quizzes}}                

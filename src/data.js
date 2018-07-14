@@ -105,7 +105,6 @@ window.computeUsersStats = (users, progress, courses) => {
             })
         })
 
-         
                 // Math.round() retorna el valor de un número redondeado al entero más cercano.
                 // formula para el porcentaje del avance del alumno
                 percentReads = Math.round((completedReads / totalReads) * 100) ;  
