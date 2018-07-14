@@ -10,7 +10,7 @@ window.computeUsersStats = (users, progress, courses) => {
 
         let totalExercises = 0;
         let completedExercises = 0;
-        let percentExercises = '';
+        let percentExercises = 0;
 
         const arrCourses = Object.keys(objCoursesUserId) // [ keys 3 courses]
         // console.log(arrCourses);
@@ -38,8 +38,13 @@ window.computeUsersStats = (users, progress, courses) => {
                         
                         if(exercises.hasOwnProperty("completed")){//true
                             // console.log(exercises.completed)
-                            totalExercises += 1; // le sumamos 1 para saber cuantas realizo
+                            
+                            // totalExercises = totalExercises + 1; // le sumamos 1 para saber cuantas realizo
+                            // totalExercises + = "a"; // le sumamos 1 para saber cuantas realizo
+                            totalExercises++; // le sumamos 1 para saber cuantas realizo
+                            
                             completedExercises += exercises.completed; // sumamos y guardamos (exercises-completed)
+                            // console.log(totalExercises)
                         }
                     })          
                 }
@@ -47,10 +52,15 @@ window.computeUsersStats = (users, progress, courses) => {
         })
 
     // Math.round() retorna el valor de un número redondeado al entero más cercano.
-    // formula para el porcentaje del avance del alumno
-    percentExercises = Math.round((completedExercises / totalExercises) * 100)+"%";  
+    // formul(a para el porcentaje del avance del alumno
+    // console.log((completedExercises / totalExercises))
+    // isNaN = esto no es un numero
+    // !isNaN = '!' lo contrario = esto es un numero
+    if(!isNaN(completedExercises / totalExercises)){
+        percentExercises = Math.round((completedExercises / totalExercises) * 100);  
+        // console.log(percentExercises)
+    }
 
-        // console.log(totalExercises)
         // console.log(completedExercises)
         // console.log(percentExercises)
 
@@ -67,7 +77,7 @@ window.computeUsersStats = (users, progress, courses) => {
 
         let totalReads = 0;
         let completedReads = 0;
-        let percentReads = '';
+        let percentReads = 0;
        
         const arrCourses = Object.keys(objCoursesUserId) // [ keys 3 courses]
         // console.log(arrCourses);
@@ -91,7 +101,6 @@ window.computeUsersStats = (users, progress, courses) => {
                         
                         completedReads += objKeyValorCaUnoCourses.completed //se encarga de acumular los quizes completados, segun su valor: 1=completado y 0= no completado
                         // console.log(completedReads);   
-                
                 } 
             })
         })
@@ -99,7 +108,7 @@ window.computeUsersStats = (users, progress, courses) => {
          
                 // Math.round() retorna el valor de un número redondeado al entero más cercano.
                 // formula para el porcentaje del avance del alumno
-                percentReads = Math.round((completedReads / totalReads) * 100) + "%";  
+                percentReads = Math.round((completedReads / totalReads) * 100) ;  
                 // console.log(percentReads);
                 
         return ({ // retornando el nuevo objeto con las 3 propiedades por alumno
@@ -115,7 +124,7 @@ window.computeUsersStats = (users, progress, courses) => {
 
         let totalQuizzes = 0;
         let completedQuizzes = 0;
-        let percentQuizzes= '';
+        let percentQuizzes= 0;
         let scoreSumQuizzes = 0;
         let scoreAvgQuizzes = 0;
 
@@ -152,12 +161,12 @@ window.computeUsersStats = (users, progress, courses) => {
 
         // Math.round() retorna el valor de un número redondeado al entero más cercano.
                 // formula para el porcentaje del avance del alumno
-                percentQuizzes = Math.round((completedQuizzes / totalQuizzes) * 100) + "%";  
+                percentQuizzes = Math.round((completedQuizzes / totalQuizzes) * 100) ;  
                 // console.log(percentQuizzes); 
                     // console.log(type); 
                     
                 // Math.round() retorna el valor de un número redondeado al entero más cercano.    
-                // promedio de puntuaciones en quizes completados
+                // scoreAvgQuizzes es promedio de puntuaciones en quizes completados
                 scoreAvgQuizzes =  Math.round(scoreSumQuizzes / totalQuizzes)
                 // console.log(scoreAvgQuizzes);
 
@@ -231,7 +240,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                 }
                 
             }
-            
+
         });
 
     }     
@@ -240,7 +249,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
         ordenado = users.sort((ele1, ele2) => {
 
-        if(orderDirection ==='DESC'){
+        if(orderDirection ==='ASC'){
 
                 if (ele1.stats.percent > ele2.stats.percent) {
                     return 1;
@@ -250,7 +259,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                     return 0;
                 }
             
-        }else if(orderDirection ==='ASC'){
+        }else if(orderDirection ==='DESC'){
 
 
                 if (ele1.stats.percent > ele2.stats.percent) {
@@ -270,22 +279,24 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
     if(orderBy ==='porEjerCorrAuto'){
 
         ordenado = users.sort((ele1, ele2) => {
+            
+                // console.log(ele1.stats.exercises.percent, ele2.stats.exercises.percent)
 
-            if(orderDirection ==='DESC'){
+            if(orderDirection ==='ASC'){
 
                 if (ele1.stats.exercises.percent > ele2.stats.exercises.percent) {
                     return 1;
-                }else if(ele1.stats.exercises.percent < ele1.stats.exercises.percent) {
+                }else if(ele1.stats.exercises.percent < ele2.stats.exercises.percent) {
                     return -1;
                 }else { 
                     return 0;
                 }
 
-            }else if(orderDirection ==='ASC'){
+            }else if(orderDirection ==='DESC'){
 
                 if (ele1.stats.exercises.percent > ele2.stats.exercises.percent) {
                     return -1;
-                }else if(ele1.stats.exercises.percent < ele1.stats.exercises.percent) {
+                }else if(ele1.stats.exercises.percent < ele2.stats.exercises.percent) {
                     return 1;
                 }else { 
                     return 0;
@@ -301,21 +312,21 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
         ordenado = users.sort((ele1, ele2) => {
 
-            if(orderDirection ==='DESC'){
+            if(orderDirection ==='ASC'){
 
                 if (ele1.stats.quizzes.percent > ele2.stats.quizzes.percent) {
                     return 1;
-                }else if(ele1.stats.quizzes.percent < ele1.stats.quizzes.percent) {
+                }else if(ele1.stats.quizzes.percent < ele2.stats.quizzes.percent) {
                     return -1;
                 }else { 
                     return 0;
                 }
                 
-            }else if(orderDirection ==='ASC'){
+            }else if(orderDirection ==='DESC'){
 
                 if (ele1.stats.quizzes.percent > ele2.stats.quizzes.percent) {
                     return -1;
-                }else if(ele1.stats.quizzes.percent < ele1.stats.quizzes.percent) {
+                }else if(ele1.stats.quizzes.percent < ele2.stats.quizzes.percent) {
                     return 1;
                 }else { 
                     return 0;
@@ -331,21 +342,21 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
         ordenado = users.sort((ele1, ele2) => {
 
-            if(orderDirection ==='DESC'){
+            if(orderDirection ==='ASC'){
 
                 if (ele1.stats.quizzes.scoreAvg > ele2.stats.quizzes.scoreAvg) {
                     return 1;
-                }else if(ele1.stats.quizzes.scoreAvg < ele1.stats.quizzes.scoreAvg) {
+                }else if(ele1.stats.quizzes.scoreAvg < ele2.stats.quizzes.scoreAvg) {
                     return -1;
                 }else { 
                     return 0;
                 }
 
-            }else if(orderDirection ==='ASC'){
+            }else if(orderDirection ==='DESC'){
 
                 if (ele1.stats.quizzes.scoreAvg > ele2.stats.quizzes.scoreAvg) {
                     return -1;
-                }else if(ele1.stats.quizzes.scoreAvg < ele1.stats.quizzes.scoreAvg) {
+                }else if(ele1.stats.quizzes.scoreAvg < ele2.stats.quizzes.scoreAvg) {
                     return 1;
                 }else { 
                     return 0;
@@ -361,21 +372,21 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
         ordenado = users.sort((ele1, ele2) => {
 
-            if(orderDirection ==='DESC'){
+            if(orderDirection ==='ASC'){
 
                 if (ele1.stats.reads.percent > ele2.stats.reads.percent) {
                     return 1;
-                }else if(ele1.stats.reads.percent < ele1.stats.reads.percent) {
+                }else if(ele1.stats.reads.percent < ele2.stats.reads.percent) {
                     return -1;
                 }else { 
                     return 0;
                 }
 
-            }else if(orderDirection ==='ASC'){
+            }else if(orderDirection ==='DESC'){
 
                 if (ele1.stats.reads.percent > ele2.stats.reads.percent) {
                     return -1;
-                }else if(ele1.stats.reads.percent < ele1.stats.reads.percent) {
+                }else if(ele1.stats.reads.percent < ele2.stats.reads.percent) {
                     return 1;
                 }else { 
                     return 0;
@@ -390,8 +401,8 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
 window.filterUsers = (users, search) => { 
     //     console.log(users)
-    if(search!==''){
-       // return  users.filter(ele => (ele.name.toUpperCase().indexOf(search.toUpperCase())) !== -1)
+    if(search !== ''){
+       return  users.filter(ele => (ele.name.toUpperCase().indexOf(search.toUpperCase())) !== -1)
     }
     return  users ;
 }

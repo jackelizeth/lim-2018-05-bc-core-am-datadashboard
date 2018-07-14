@@ -118,17 +118,17 @@ console.log(data)
         EXERCISES:<br>
         Total:${ele.stats.exercises.total}<br>
         Completados:${ele.stats.exercises.completed}<br>
-        Porcentaje:${ele.stats.exercises.percent}<br><br>
+        Porcentaje:${ele.stats.exercises.percent}%<br><br>
 
         READ:<br>
         Total:${ele.stats.reads.total}<br>
         Completados:${ele.stats.reads.completed}<br>
-        Porcentaje:${ele.stats.reads.percent}<br><br>
+        Porcentaje:${ele.stats.reads.percent}%<br><br>
 
         QUIZ:<br>
         Total:${ele.stats.quizzes.total}<br>
         Completados:${ele.stats.quizzes.completed}<br>
-        Porcentaje:${ele.stats.quizzes.percent}<br>
+        Porcentaje:${ele.stats.quizzes.percent}%<br>
         scoreSum:${ele.stats.quizzes.scoreSum}<br>
         scoreAvg:${ele.stats.quizzes.scoreAvg}<br><br><hr>
         `;
