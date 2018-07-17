@@ -7,8 +7,10 @@ const getError = () => {
     /** data cohort **/
     const xhrC = new XMLHttpRequest();
     xhrC.open('GET', urlCoh); //apertura una conexion
-    xhrC.onload = (event) => { // onload carga un documento y cuando termina lo analiza //funcion anonima
+    xhrC.onload = (event) => { // onload carga el documento y lo analiza //funcion anonima
 
+        // console.log(event.target.readyState) // 4 la respuesta esta lista 
+        // console.log(event.target.status) // 200 todo esta correcto
         if (event.target.readyState == 4 && event.target.status == 200) {
 
         const arrCoh = JSON.parse(event.target.response);
@@ -19,40 +21,36 @@ const getError = () => {
             // cada elemento de array sera recorrido
             arrCoh.forEach(ele => {
 
-            // selectListaCohorts inserta en la etiqueta option,el elemento del arrCoh, muestra todos los id de los cohorts lima mexico brasil
-            selectListaCohorts.innerHTML +=`<option value=${ele.id}>${ele.id}</option>`; //realizando templey
+            // selectListaCohorts inserta en la etiqueta option los id de los cohorts lima mexico brasil
+            selectListaCohorts.innerHTML +=`<option value=${ele.id}>${ele.id}</option>`; //realizando template
             });
 
         /** creando evento a la etiqueta input boton de search SendData**/
         const SendData = (event) => {   
 
                 let idCohort =  document.getElementById('listaCohort').value;//value = lim-2018-03-pre-core-pw
-                // console.log(idCohort);
 
+                /** data users **/
                 const xhrUser = new XMLHttpRequest();
-                xhrUser.open('GET',`../data/cohorts/${idCohort}/users.json`); //lim-2018-03-pre-core-pw = ${event.target.value} 
+                xhrUser.open('GET',`../data/cohorts/${idCohort}/users.json`); //lim-2018-03-pre-core-pw = ${idCohort}
                 xhrUser.onload = (event) => { 
 
-                // console.log(event.target.readyState) // 4 la respuesta esta lista 
-                // console.log(event.target.status) // 200 todo esta correcto
                 if (event.target.readyState == 4 && event.target.status == 200) {
 
                     let arraUsers = JSON.parse(event.target.response);
-                    // console.log(arraUsers)
 
+                         /** data progress **/
                         const xhrPro = new XMLHttpRequest();
-                        xhrPro.open('GET',`../data/cohorts/${idCohort}/progress.json`);//apertura una conexion
+                        xhrPro.open('GET',`../data/cohorts/${idCohort}/progress.json`);
                         xhrPro.onload = (event) => { 
 
                         if (event.target.readyState == 4 && event.target.status == 200) {
                             
                             let objProgress = JSON.parse(event.target.response);
-                            // console.log(objProgress)
 
                             const options = {
                                 "cohort"          :  arrCoh.filter((ele) => {return ele.id == idCohort}),
-                                // filter del arrCoh solo del ele su id comparo con el idCohort (idCohort = lim-2018-03-pre-core-pw) 
-                                // cohort es solo filtro cohort lima [{lim-2018-03-pre-core-pw}] y todo su contenido
+                                // filter del arrCoh el id  compararlo con el idCohort (idCohort = lim-2018-03-pre-core-pw) 
                                 "cohortData"      : {
                                                     "users"       : arraUsers,
                                                     "progress"    : objProgress,
@@ -64,15 +62,13 @@ const getError = () => {
                             }
 
                             const cohortUsePro = processCohortData(options);// llamar a la funcion 
-                            // console.log(options)
-                            // el objeto options contiene: 
-                            // (cohort : [arrCoh]),
+                            // console.log(options)// captura todo el lo que contiene el objeto options
+                            // contiene :  (cohort : [arrCoh]),
                             // (cohortData :   { (user : [arraUsers]), (progress : {objProgress})  } )
                             // orderBy,orderDirection,search
 
-                            newDataAllUser(cohortUsePro);
-                            // console.log(cohortUsePro)  
-                            // cohortUsePro = contiene todo lo que retorna processCohortData
+                            newDataAllUser(cohortUsePro);// llamar a la funcion 
+                            // console.log(cohortUsePro)// captura todo lo que retorna processCohortData
                             // cohortUsePro contiene el objeto {name, stats :{ percent, exercises ,reads, quizzes}}                
                         }
                         }
@@ -83,7 +79,6 @@ const getError = () => {
                 xhrUser.onerror = getError; 
                 xhrUser.send();
         };
-
         /** etiqueta input boton de search  **/
         const search = document.getElementById('btn-search');
         const orderBy = document.getElementById('orderBy');
@@ -97,16 +92,18 @@ const getError = () => {
 xhrC.onerror = getError;
 xhrC.send();
 
-const newDataAllUser = (data) => {
-console.log(data)
+const newDataAllUser = (data) => {//captura todo lo que retorna processCohortData
+// console.log(data)//newDataAllUser (data) = (cohortUsePro) 
+//(data) = contiene el objeto options = {name, stats :{ percent, exercises ,reads, quizzes}}
 
-    //  muestra el listado general de los cohorts
+    /**  captura de la etiqueta section su id **/   
     const progresoExercises = document.getElementById('progresoExerci');
 
-    progresoExercises.innerHTML ="";
+    progresoExercises.innerHTML ="";//se mostrara la newDataAllUser
     
     let dataHtml = '';
-    // cada elemento de array sera recorrido
+
+     /** recorre (data) = objeto options = {name, stats :{ percent, exercises ,reads, quizzes}}**/   
     data.forEach(ele => {
 
         dataHtml +=`
@@ -130,9 +127,8 @@ console.log(data)
         Porcentaje:${ele.stats.quizzes.percent}%<br>
         scoreSum:${ele.stats.quizzes.scoreSum}<br>
         scoreAvg:${ele.stats.quizzes.scoreAvg}<br><br><hr>
-        `;
+        `;//realizando template
     });
-
     progresoExercises.innerHTML =  dataHtml;
 }
 

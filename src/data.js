@@ -1,48 +1,44 @@
 window.computeUsersStats = (users, progress, courses) => {
     const objProgress = progress;
     courses;
+
+    /** filter al array users **/
     const arrOnlyStudents = users.filter(eleUser => eleUser.signupCohort === 'lim-2018-03-pre-core-pw');
-    //    console.log(arrOnlyStudents);//726 estudiantes
+    // console.log(arrOnlyStudents);//726 estudiantes
 
     /**  funciones calcularExercisesPractice **/
-    const calcularExercisesPractice = (objCoursesUserId) => { //{objeto con 3 courses completos}
-        // console.log(objCoursesUserId);
+    const calcularExercisesPractice = (objCoursesUserId) => { 
+        // console.log(objCoursesUserId);//objCoursesUserId = {objeto con 3 courses completos}
 
         let totalExercises = 0;
         let completedExercises = 0;
         let percentExercises = 0;
 
         const arrCourses = Object.keys(objCoursesUserId) // [ keys 3 courses]
-        // console.log(arrCourses);
-       
-        arrCourses.map(eleCourse =>{ 
+        
+        arrCourses.map(eleCourse =>{ // cada nombre de los 3 courses
 
-        const objGeneral_6_keysCaUnoCourses = objCoursesUserId[eleCourse]; // {3 courses completos} ingresa c/u (eleCourse) = muestra 3 {6 keys} por course 
-            // console.log(objGeneral_6_keysCaUnoCourses); // muestra 3 {6 keys} por course
+        const objGeneral_6_keysCaUnoCourses = objCoursesUserId[eleCourse]; // muestra 3 {6 keys} por course 
+        // console.log(objGeneral_6_keysCaUnoCourses); // muestra 3 {6 keys} por course
 
-            // console.log(objGeneral_6_keysCaUnoCourses.parts); //ingresa (parts) c/u course = muestra 1er-parts{5 keys}, 2er-parts {4 keys}, 3er-parts {7 keys} 
-
-        Object.keys(objGeneral_6_keysCaUnoCourses.parts).map(elePart =>{ // [] mapea cada elePart 
-            const objKeyValorCaUnoCourses = objGeneral_6_keysCaUnoCourses.parts[elePart]; // ingresa (parts), ingresa c/u (elePart)  = muestra 5{keys:valor} 4{keys:valor} 7{keys:valor}
+        // console.log(objGeneral_6_keysCaUnoCourses.parts); muestra 1-parts{5 keys}, 1-parts{4 keys}, 1-parts{7 keys} 
+        Object.keys(objGeneral_6_keysCaUnoCourses.parts).map(elePart =>{
+            const objKeyValorCaUnoCourses = objGeneral_6_keysCaUnoCourses.parts[elePart];// muestra 5{keys:valor}, 4{keys:valor}, 7{keys:valor}
                 // console.log(objKeyValorCaUnoCourses); //muestra 5{keys:valor} 4{keys:valor} 7{keys:valor}
 
-                //  console.log(objKeyValorCaUnoCourses.completed)
-
-                if(objKeyValorCaUnoCourses.hasOwnProperty('exercises')){//true si tiene la propiedad exercises
-                    const obje_exercises = objKeyValorCaUnoCourses.exercises ; // ingresa de propiedad exercises de exercises = muestra 2 {key:valor} de exercises
+                if(objKeyValorCaUnoCourses.hasOwnProperty('exercises')){//true 
+                    const obje_exercises = objKeyValorCaUnoCourses.exercises; // muestra 2 {key:valor} de exercises
                     // console.log(obje_exercises) // muestra 2 {key:valor} de exercises
 
-                    Object.keys(obje_exercises).map(eleExercises =>{ // [] mapea cada eleExercises                   
-                        const exercises = obje_exercises[eleExercises] ; //ingreso (eleExercises) = muestra 2 {key : valor}
+                    Object.keys(obje_exercises).map(eleExercises =>{                  
+                        const exercises = obje_exercises[eleExercises] ; // muestra 2 {key : valor}
                         // console.log(exercises); // = muestra 2 {key : valor}
                         
                         if(exercises.hasOwnProperty("completed")){//true
                             // console.log(exercises.completed)
                             
-                            // totalExercises = totalExercises + 1; // le sumamos 1 para saber cuantas realizo
-                            // totalExercises + = "a"; // le sumamos 1 para saber cuantas realizo
-                            totalExercises++; // le sumamos 1 para saber cuantas realizo
-                            
+                            // totalExercises = totalExercises + 1; 
+                            totalExercises++; // suma el total de exercises que son 2
                             completedExercises += exercises.completed; // sumamos y guardamos (exercises-completed)
                             // console.log(totalExercises)
                         }
@@ -50,30 +46,27 @@ window.computeUsersStats = (users, progress, courses) => {
                 }
             })
         })
+        // isNaN = esto No es un Numero
+        // !isNaN = '!' lo contrario = esto es un numero
+        if(!isNaN(completedExercises / totalExercises)){//true
 
-    // Math.round() retorna el valor de un número redondeado al entero más cercano.
-    // formul(a para el porcentaje del avance del alumno
-    // console.log((completedExercises / totalExercises))
-    // isNaN = esto no es un numero
-    // !isNaN = '!' lo contrario = esto es un numero
-    if(!isNaN(completedExercises / totalExercises)){
-        percentExercises = Math.round((completedExercises / totalExercises) * 100);  
-        // console.log(percentExercises)
-    }
+            // formula para el PROCENTAJE (%) del avance del alumno
+            // Math.round() retorna el valor de un número redondeado al entero más cercano.
+            percentExercises = Math.round((completedExercises / totalExercises) * 100);  
+            // console.log(percentExercises)
+        }
 
-        // console.log(completedExercises)
-        // console.log(percentExercises)
-
-        return ({ // retornando el nuevo objeto con las 3 propiedades por alumno
-            
-                        'total'       :   totalExercises,
-                        'completed'   :   completedExercises,
-                        'percent'     :   percentExercises      
-        });
+            return ({ // retornando el nuevo objeto con las 3 propiedades por alumno
+                
+                            'total'       :   totalExercises,
+                            'completed'   :   completedExercises,
+                            'percent'     :   percentExercises      
+            });
     };
+
     /**  funciones calcularReads **/
-    const calcularReads = (objCoursesUserId) => { //{objeto con 3 courses completos}
-        // console.log(objCoursesUserId);
+    const calcularReads = (objCoursesUserId) => { 
+        // console.log(objCoursesUserId);//objCoursesUserId = {objeto con 3 courses completos}
 
         let totalReads = 0;
         let completedReads = 0;
@@ -82,33 +75,28 @@ window.computeUsersStats = (users, progress, courses) => {
         const arrCourses = Object.keys(objCoursesUserId) // [ keys 3 courses]
         // console.log(arrCourses);
        
-        arrCourses.map(eleCourse =>{
-            const objGeneral_6_keysCaUnoCourses = objCoursesUserId[eleCourse]; // {3 courses completos} ingresa c/u (eleCourse) = muestra 3 {6 keys} por course 
+        arrCourses.map(eleCourse =>{// cada nombre de los 3 courses
+
+            const objGeneral_6_keysCaUnoCourses = objCoursesUserId[eleCourse]; //muestra 3 {6 keys} por course 
             // console.log(objGeneral_6_keysCaUnoCourses); // muestra 3 {6 keys} por course
 
-            // console.log(objGeneral_6_keysCaUnoCourses.parts); //ingresa (parts) c/u course = muestra 1er-parts{5 keys}, 2er-parts {4 keys}, 3er-parts {7 keys} 
-
-            Object.keys(objGeneral_6_keysCaUnoCourses.parts).map(elePart =>{ // [] mapea cada elePart 
-
-                const objKeyValorCaUnoCourses = objGeneral_6_keysCaUnoCourses.parts[elePart]; // ingresa (parts), ingresa c/u (elePart)  = muestra 5{keys:valor} 4{keys:valor} 7{keys:valor}
+            // console.log(objGeneral_6_keysCaUnoCourses.parts); //muestra 1-parts{5 keys}, 1-parts {4 keys}, 1-parts {7 keys} 
+            Object.keys(objGeneral_6_keysCaUnoCourses.parts).map(elePart =>{ 
+                const objKeyValorCaUnoCourses = objGeneral_6_keysCaUnoCourses.parts[elePart]; // muestra 5{keys:valor} 4{keys:valor} 7{keys:valor}
                 // console.log(objKeyValorCaUnoCourses); //muestra 5{keys:valor} 4{keys:valor} 7{keys:valor}
 
-                // console.log("fuera de read : "+objKeyValorCaUnoCourses);   
                 if( objKeyValorCaUnoCourses.hasOwnProperty('type') && objKeyValorCaUnoCourses.type  == 'read') {
                   
                         totalReads++; // se encarga de contar cuantos quiz encuentra cada vez que entra a la condicion IF
                         // console.log(totalReads); 
-                        
-                        completedReads += objKeyValorCaUnoCourses.completed //se encarga de acumular los quizes completados, segun su valor: 1=completado y 0= no completado
+                
+                        completedReads += objKeyValorCaUnoCourses.completed //acumula los quizes completados
                         // console.log(completedReads);   
                 } 
             })
         })
-
-                // Math.round() retorna el valor de un número redondeado al entero más cercano.
-                // formula para el porcentaje del avance del alumno
+                // formula para el PROCENTAJE (%) del avance del alumno
                 percentReads = Math.round((completedReads / totalReads) * 100) ;  
-                // console.log(percentReads);
                 
         return ({ // retornando el nuevo objeto con las 3 propiedades por alumno
                         total:   totalReads,
@@ -118,8 +106,8 @@ window.computeUsersStats = (users, progress, courses) => {
     };
 
     /**  funciones calcularQuizzes **/
-    const calcularQuizzes = (objCoursesUserId) => { //{objeto con 3 courses completos}
-        // console.log(objCoursesUserId);
+    const calcularQuizzes = (objCoursesUserId) => { 
+        // console.log(objCoursesUserId);//objCoursesUserId = {objeto con 3 courses completos}
 
         let totalQuizzes = 0;
         let completedQuizzes = 0;
@@ -130,44 +118,40 @@ window.computeUsersStats = (users, progress, courses) => {
         const arrCourses = Object.keys(objCoursesUserId) // [ keys 3 courses]
         // console.log(arrCourses);
        
-        arrCourses.map(eleCourse =>{
-            const objGeneral_6_keysCaUnoCourses = objCoursesUserId[eleCourse]; // {3 courses completos} ingresa c/u (eleCourse) = muestra 3 {6 keys} por course 
+        arrCourses.map(eleCourse =>{// cada nombre de los 3 courses
+
+            const objGeneral_6_keysCaUnoCourses = objCoursesUserId[eleCourse]; // muestra 3 {6 keys} por course 
             // console.log(objGeneral_6_keysCaUnoCourses); // muestra 3 {6 keys} por course
 
-            // console.log(objGeneral_6_keysCaUnoCourses.parts); //ingresa (parts) c/u course = muestra 1er-parts{5 keys}, 2er-parts {4 keys}, 3er-parts {7 keys} 
-
-            Object.keys(objGeneral_6_keysCaUnoCourses.parts).map(elePart =>{ // [] mapea cada elePart 
-
-                const objKeyValorCaUnoCourses = objGeneral_6_keysCaUnoCourses.parts[elePart]; // ingresa (parts), ingresa c/u (elePart)  = muestra 5{keys:valor} 4{keys:valor} 7{keys:valor}
+            // console.log(objGeneral_6_keysCaUnoCourses.parts); //muestra 1-parts{5 keys}, 1-parts {4 keys}, 1-parts {7 keys} 
+            Object.keys(objGeneral_6_keysCaUnoCourses.parts).map(elePart =>{
+                const objKeyValorCaUnoCourses = objGeneral_6_keysCaUnoCourses.parts[elePart]; // muestra 5{keys:valor} 4{keys:valor} 7{keys:valor}
                 // console.log(objKeyValorCaUnoCourses); //muestra 5{keys:valor} 4{keys:valor} 7{keys:valor}
 
                 if( objKeyValorCaUnoCourses.hasOwnProperty('type') && objKeyValorCaUnoCourses.type  == 'quiz') {
                   
-                        totalQuizzes++; // se encarga de contar cuantos quiz encuentra cada vez que entra a la condicion IF
-                        // console.log(totalQuizzes); 
+                    totalQuizzes++; // se encarga de contar cuantos quiz encuentra cada vez que entra a la condicion IF
+                    // console.log(totalQuizzes); 
                         
-                        completedQuizzes += objKeyValorCaUnoCourses.completed //se encarga de acumular los quizes completados, segun su valor: 1=completado y 0= no completado
-                        // console.log(completedQuizzes);   
+                    completedQuizzes += objKeyValorCaUnoCourses.completed //se encarga de acumular los quizes completados
+                    // console.log(completedQuizzes);   
                         
-                        if( objKeyValorCaUnoCourses.completed == 1){     // si completado es igual a 1  entra          
+                    if( objKeyValorCaUnoCourses.completed == 1){ // si completado es igual a 1  entra          
                           
-                            scoreSumQuizzes += objKeyValorCaUnoCourses.score // sumo total de puntuacion score del alumno por cada quiz completado
-                                // console.log(scoreSumQuizzes);                                 
-                        }
+                        // scoreSumQuizzes suma score = (PUNTUACION) del alumno por cada quiz completado
+                        scoreSumQuizzes += objKeyValorCaUnoCourses.score 
+                        // console.log(scoreSumQuizzes);                                 
+                    }
                 }
             })
         })
-
-        // Math.round() retorna el valor de un número redondeado al entero más cercano.
-                // formula para el porcentaje del avance del alumno
-                percentQuizzes = Math.round((completedQuizzes / totalQuizzes) * 100) ;  
-                // console.log(percentQuizzes); 
-                    // console.log(type); 
-                    
-                // Math.round() retorna el valor de un número redondeado al entero más cercano.    
-                // scoreAvgQuizzes es promedio de puntuaciones en quizes completados
-                scoreAvgQuizzes =  Math.round(scoreSumQuizzes / totalQuizzes)
-                // console.log(scoreAvgQuizzes);
+        // formula para el PROCENTAJE (%) del avance del alumno
+         percentQuizzes = Math.round((completedQuizzes / totalQuizzes) * 100) ;  
+        // console.log(percentQuizzes); 
+        
+        // scoreAvgQuizzes es PROMEDIO de puntuaciones en quizes completados
+        scoreAvgQuizzes =  Math.round(scoreSumQuizzes / totalQuizzes)
+        // console.log(scoreAvgQuizzes);
 
         return ({ // retornando el nuevo objeto con las 3 propiedades por alumno
                         total:   totalQuizzes,
@@ -178,50 +162,57 @@ window.computeUsersStats = (users, progress, courses) => {
         });
     };
 
-    /** iteramos arrOnlyStudents  **/
+    /** iteramos arrOnlyStudents solo a las 726 estudiantes **/
     const usersWithStats = arrOnlyStudents.map(eleOnlyStudents => {   
         
         // objProgress[eleStudents.id]["intro"]
+        // si del objProgress de cada users de su id tiene intro
         if(objProgress[eleOnlyStudents.id].hasOwnProperty("intro")){//true
 
-            names = eleOnlyStudents.name
-            percents = objProgress[eleOnlyStudents.id].intro.percent;
-            // console.log(percents)//muestra el valor de percents
-    
-            newObjExercises = calcularExercisesPractice(objProgress[eleOnlyStudents.id].intro.units); // llamando a la funcion del calculo de los exercises,  {objeto con 3 propiedades courses completos}
+            names = eleOnlyStudents.name//muestra como valor los nombres
+            // console.log(names)
+
+            // del objProgress[eleOnlyStudents.id] ingresando a intro y a su percent
+            percents = objProgress[eleOnlyStudents.id].intro.percent;//muestra como valor el percents
+            // console.log(percents)
+
+            // llamando a la funcion del calculo exercises, quizzes y reads
+            newObjExercises = calcularExercisesPractice(objProgress[eleOnlyStudents.id].intro.units); 
             newObjQuizzes = calcularQuizzes(objProgress[eleOnlyStudents.id].intro.units);
             newObjReads = calcularReads(objProgress[eleOnlyStudents.id].intro.units);
+            // console.log(objProgress[eleOnlyStudents.id].intro.units)//muestra como valor {objeto con 3 courses completos}
             }
-            return ({ //retornado el objeto total del Stats por alumno , cvon todas las propiedades solicitadas
-                        name          :  names,
+            // console.log(newObjExercises)
+            // console.log(newObjQuizzes)
+            // console.log(newObjReads)
+            
+            return ({ //retornado el objeto total del Stats por alumno , con todas las propiedades solicitadas
+                        name          :  names,                       
                         stats         :  { 
-                                            percent   : percents,
-                                            exercises : newObjExercises, //agregando las 3 propiedades del exercises por alumno
-                                            reads     : newObjReads,
-                                            quizzes   : newObjQuizzes
-                        }, 
-            });
+                                            percent   : percents,// percents general por alumno
+                                            exercises : newObjExercises, //3 propiedades del exercises por alumno
+                                            reads     : newObjReads, //3 propiedades del reads por alumno
+                                            quizzes   : newObjQuizzes //5 propiedades del quizz por alumno
+                                        }, 
+            });  
     }); 
-
-
     return usersWithStats;
     // console.log(usersWithStats)
 }
     
 window.sortUsers = (users, orderBy, orderDirection ) => { 
-        // console.log(users)
-        // console.log(orderBy)
-        // console.log(orderDirection)
-        let ordenado ;
+   
+    let ordenado ;
 
     if(orderBy ==='nombre'){
 
+        //El método sort() ordena los elementos de un array localmente y devuelve el array
         ordenado = users.sort((ele1, ele2) => {
 
             if(orderDirection ==='ASC'){
 
                 if (ele1.name > ele2.name) {
-                    return 1;
+                    return 1;//ele1.name es mayor que "0" osea 1
                 }else if (ele1.name < ele2.name) {
                     return -1;
                 }else { 
@@ -237,11 +228,8 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                 }else { 
                     return 0;
                 }
-                
             }
-
         });
-
     }     
         
     if(orderBy ==='porCompTotal'){
@@ -269,9 +257,7 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                     return 0;
                 }
             }
-
         });
-
     }  
 
 
@@ -279,8 +265,6 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
 
         ordenado = users.sort((ele1, ele2) => {
             
-                // console.log(ele1.stats.exercises.percent, ele2.stats.exercises.percent)
-
             if(orderDirection ==='ASC'){
 
                 if (ele1.stats.exercises.percent > ele2.stats.exercises.percent) {
@@ -300,11 +284,8 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                 }else { 
                     return 0;
                 }
-
             }
-
         });
-
     }
 
     if(orderBy ==='porQuizCompl'){
@@ -330,11 +311,8 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                 }else { 
                     return 0;
                 }
-
             }
-
         });
-
     }
 
     if(orderBy ==='punQuizzCompl'){
@@ -360,11 +338,8 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                 }else { 
                     return 0;
                 }
-
             }
-
         });
-
     }
 
     if(orderBy ==='porLectComp'){
@@ -391,15 +366,13 @@ window.sortUsers = (users, orderBy, orderDirection ) => {
                     return 0;
                 }
             }
-
         });
-
     }
- return ordenado;
+    return ordenado;
 }   
 
 window.filterUsers = (users, search) => { 
-    //     console.log(users)
+ 
     if(search !== ''){
        return  users.filter(ele => (ele.name.toUpperCase().indexOf(search.toUpperCase())) !== -1)
     }
@@ -410,19 +383,17 @@ window.processCohortData = (options) => {
     // optionses un objeto
     // console.log(options)
 
-    // options.cohort = [{lim-2018-03-pre-core-pw}] y todo su contenido
-    // options.cohort[0] = ingreso a su elemento o propiedad {lim-2018-03-pre-core-pw}y todo su contenido
-    // options.cohort[0].coursesIndex = el (puto) significa que ingreso al objeto y me situo en la propiedad coursesIndex
-    // coursesIndex = me muestra su valor que es {intro: y todo su contenido}
-    // arrayCourses = es con el Object.keyses un [{'intro'}] solo de propiedades
+    // options.cohort[0].coursesIndex = muestra {intro: y todo su contenido}
     let arrayCourses = Object.keys(options.cohort[0].coursesIndex);
-    // console.log(arrayCourses)
+    // console.log(arrayCourses)// muestra {intro: y todo su contenido}
     
     let users = filterUsers(options.cohortData.users, options.search)
-    users = computeUsersStats(users, options.cohortData.progress, arrayCourses);
-    users = sortUsers(users, options.orderBy, options.orderDirection);
 
+    users = computeUsersStats(users, options.cohortData.progress, arrayCourses);
+
+    users = sortUsers(users, options.orderBy, options.orderDirection);
     // console.log(users, options.orderBy, options.orderDirection)
+    
     return users;     
 }
 
